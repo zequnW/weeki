@@ -1,11 +1,8 @@
 # Welcome to My Wiki~
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
+一个追梦的不想得抑郁症的阳光的男孩
 
-## Commands
+## Links
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
-
+[我的GitHub](https://github.com/zequnW)
+[我的课题组 NET-GROUP](https://net-sust.github.io/)
