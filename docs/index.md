@@ -2,8 +2,7 @@
 
 一个追梦的不想得抑郁症的阳光的男孩
 
-## Links
+## ♪ Links
 
-[我的GitHub](https://github.com/zequnW)
-
-[我的课题组 NET-GROUP](https://net-sust.github.io/)
+### ● [我的GitHub](https://github.com/zequnW)
+### ● [我的课题组 NET-GROUP](https://net-sust.github.io/)
