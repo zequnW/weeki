@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>VMD - Zequn's Wiki Site</title>
+  <title>abab一些代码 - Zequn's Wiki Site</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../css/theme.css" />
@@ -18,8 +18,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "VMD";
-    var mkdocs_page_input_path = "VMD.md";
+    var mkdocs_page_name = "abab\u4e00\u4e9b\u4ee3\u7801";
+    var mkdocs_page_input_path = "Bat.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -54,12 +54,8 @@
                     <li class="toctree-l1"><a class="reference internal" href="../lammps/">Lammps</a>
                     </li>
                 </ul>
-                <ul class="current">
-                    <li class="toctree-l1 current"><a class="reference internal current" href="./">VMD</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#_1">♪ 输出高清图片</a>
-    </li>
-    </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../VMD/">VMD</a>
                     </li>
                 </ul>
                 <ul>
@@ -74,8 +70,14 @@
                     <li class="toctree-l1"><a class="reference internal" href="../Github/">Github</a>
                     </li>
                 </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../Bat/">abab一些代码</a>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">abab一些代码</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#markdown">♪ Markdown 语法</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_2">♪ 写一个公式</a>
+    </li>
+    </ul>
                     </li>
                 </ul>
                 <ul>
@@ -103,7 +105,7 @@
     
       
     
-    <li>VMD</li>
+    <li>abab一些代码</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -115,39 +117,29 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="vmd">VMD</h1>
-<h2 id="_1">♪ 输出高清图片</h2>
+                <h1 id="_1">代码</h1>
+<h2 id="markdown">♪ Markdown 语法</h2>
+<blockquote>
+<ul>
+<li>转载于: <a href="https://blog.csdn.net/afei__/article/details/80717153">https://blog.csdn.net/afei__/article/details/80717153</a></li>
+<li>可以在<a href="https://www.zybuluo.com/mdeditor">这里</a>在线预览</li>
+</ul>
+</blockquote>
 <hr />
-<ol>
-<li>
-<p>Load VMD state of the Molecule.</p>
-</li>
-<li>
-<p>Go to File -&gt; Render -&gt; Tachyon</p>
-</li>
-<li>
-<p>Change both occurrences of <del>%s</del>  to "plot" in the render window (<strong>Important!</strong>)</p>
-</li>
-<li>
-<p>Render once</p>
-</li>
-<li>
-<p>Edit resolution in XX.bat by using the following bat script:</p>
-</li>
-</ol>
-<pre><code class="language-python">    tachyon_WIN32.exe XXX.dat -aasamples 100 -mediumshade -trans_vmd -res 1024 742 -format BMP -o XXX.png
-        - &quot;XXX.dat&quot; 在render已定义
-        - &quot;100&quot; 抗锯齿，越大像素越高，24 is ok
-        - &quot;1024 742&quot;像素，可以自己改. eg 1024 742 -&gt; 2048 1484 -&gt; 6144 4452
-</code></pre>
-<ol>
-<li>
-<p>Thermail 中运行XX.dat  (拖动 或者 ./ xx.bat )</p>
-</li>
-<li>
-<p>你可以收获一张无限清晰的图片，甚至有几百MB</p>
-</li>
-</ol>
+<h2 id="_2">♪ 写一个公式</h2>
+<p>居中
+$$
+a^2+a_2+b_{34}=1
+$$</p>
+<p>随便放啦$a^{1}+1/b_{34}=1$</p>
+<p>有点复杂的
+$$ J_\alpha(x) = \sum_{m=0}^\infty \frac{(-1)^m}{m! \Gamma (m + \alpha + 1)} {\left({ \frac{x}{2} }\right)}^{2m + \alpha} \tag{1.1}$$</p>
+<blockquote>
+<ul>
+<li>转载于: <a href="https://www.zybuluo.com/mdeditor">https://www.zybuluo.com/mdeditor</a></li>
+</ul>
+</blockquote>
+<hr />
 <script type="text/javascript" async
   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
 </script>
@@ -163,10 +155,10 @@ MathJax.Hub.Config({
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../Linux/" class="btn btn-neutral float-right" title="Linux">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../Figures/" class="btn btn-neutral float-right" title="一些照片">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../lammps/" class="btn btn-neutral" title="Lammps"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../Github/" class="btn btn-neutral" title="Github"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -192,10 +184,10 @@ MathJax.Hub.Config({
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../lammps/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../Github/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../Linux/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../Figures/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
