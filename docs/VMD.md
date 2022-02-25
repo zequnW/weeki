@@ -3,7 +3,7 @@
 ## ♪ 输出高清图片
 
 
--1.Load VMD state of the Molecule.
+1.Load VMD state of the Molecule.
 -	
 2.Go to File -> Render -> Tachyon
 -

@@ -4,4 +4,4 @@ Wiki_commit
   - 3.git add .
   - 4.git push
   - 5.git commit -m "xx"
-  - 6.gh-deploy
+  - 6.mkdocs gh-deploy
