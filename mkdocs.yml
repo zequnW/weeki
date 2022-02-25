@@ -1,1 +1,12 @@
-site_name: My Docs
+site_name: Zequn's Wiki Site
+
+nav:
+  - 主页: index.md
+  - Lammps: lammps.md
+  - VMD: VMD.md
+  - Linux: Linux.md
+  - Python: Python.md
+  - Github: Github.md
+  - 一些照片: Figures.md
+theme:
+  name: 'readthedocs'
