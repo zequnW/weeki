@@ -7,6 +7,7 @@ nav:
   - Linux: Linux.md
   - Python: Python.md
   - Github: Github.md
+  - 一些代码: bat.md
   - 一些照片: Figures.md
 theme:
   name: 'readthedocs' #'readthedocs'默认
