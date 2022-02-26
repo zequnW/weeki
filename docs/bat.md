@@ -3,10 +3,16 @@
 ## ♪ Markdown 语法
 
 > - 转载于: [https://blog.csdn.net/afei__/article/details/80717153](https://blog.csdn.net/afei__/article/details/80717153)
+	 - 删除线的话用`<del> </del>`
 > - 可以在[这里](https://www.zybuluo.com/mdeditor)在线预览
 ---
+## ♪ 上传图片获得URL地址
+
+> - 在[图床](http://astc.syac.xyz/user/images.html)上传是个很简单的办法
+
+---
 ## ♪ 写一个公式
-居中
+居中的话
 $$
 a^2+a_2+b_{34}=1
 $$
@@ -19,6 +25,23 @@ $$ J_\alpha(x) = \sum_{m=0}^\infty \frac{(-1)^m}{m! \Gamma (m + \alpha + 1)} {\l
 > - 转载于: [https://www.zybuluo.com/mdeditor](https://www.zybuluo.com/mdeditor)
 
 ---
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
