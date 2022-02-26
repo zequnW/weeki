@@ -10,4 +10,4 @@ nav:
   - 一些代码: Bat.md
   - 一些照片: Figures.md
 theme:
-  name: material #'readthedocs'默认
+  name: readthedocs #'readthedocs'默认
