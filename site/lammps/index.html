@@ -53,7 +53,9 @@
                 <ul class="current">
                     <li class="toctree-l1 current"><a class="reference internal current" href="./">Lammps</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#_1">计算声子谱</a>
+    <li class="toctree-l2"><a class="reference internal" href="#_1">♪ 在清华超算上提交计算</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_2">♪ 计算声子谱</a>
     </li>
     </ul>
                     </li>
@@ -116,7 +118,19 @@
             <div class="section">
               
                 <h1 id="lammps">Lammps</h1>
-<h2 id="_1">计算声子谱</h2>
+<h2 id="_1">♪ 在清华超算上提交计算</h2>
+<p>使用360急速浏览器或者ie(管理员模式)进入清华超算<a href="https://166.111.143.19:10000/svpn/vpnuser/home.cgi">https://166.111.143.19:10000/svpn/vpnuser/home.cgi</a></p>
+<p>清华超算采用<strong>Xhsell 6版本</strong></p>
+<p>进入文件所在的文件夹</p>
+<p>运行命令</p>
+<pre><code>bsub -a intelmpi -e error.txt -o output.txt -J xx -i xx.in -n nn mpirun.lsf /home/anmeng/WORK1/lammps-3Mar20/src/lmp_mpi
+    - xx: your commit id
+    - xx.in: your file.in
+    - nn: the number of cpu apply to compute
+    - ‘/home/anmeng/WORK1/lammps-3Mar20/src/lmp_mpi’: the address of the exe
+</code></pre>
+<hr />
+<h2 id="_2">♪ 计算声子谱</h2>
 <p><img alt="" src="https://pic2.zhimg.com/v2-61b7ad30cea9df50df16847077217b44_1440w.jpg?source=172ae18b" />
 感谢<a href="https://www.zhihu.com/people/ying-xiao-ye">泛柏舟</a>、<a href="https://www.zhihu.com/people/du-yao-89-86">学力学的图图</a>和<a href="https://zheyongfan.org/index.php/Main_Page">樊哲勇老师</a>对于计算声子谱所做出的贡献及讲解。</p>
 <p>lammps中也有<strong>“compute vacf”</strong>的命令，往往也可以得到速度的自关联函数，原则上在这个基础上通过傅里叶变换，可以得到体系中的功率频谱，也就是分子动力学方法得到的声子谱，但是仔细阅读这一命令会发现在这里计算的VACF只有<strong>一个时间原点</strong>，没有办法如同在GK平衡态方法中计算热导率那般采取许多个时间原点进行平均，一个典型的输出例子如下：</p>
