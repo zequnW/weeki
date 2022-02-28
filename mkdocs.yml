@@ -8,7 +8,7 @@ nav:
   - Python: Python.md
   - Github: Github.md
   - 一些代码: Bat.md
-  - 一些照片: Figures.md
+  - 一些想法: Figures.md
 theme:
   name: readthedocs #'readthedocs'默认
   logo: 'images/a4x2g-r195l.svg'
