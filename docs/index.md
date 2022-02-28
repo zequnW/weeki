@@ -2,7 +2,7 @@
 
 一个追梦的男孩
 
-![](http://astc.syac.xyz/2022/02/25/49dd76aad7527.jpg)
+![](https://pic4.zhimg.com/80/v2-ec2f1c2ce798d66d180079bb8bfccecf_720w.jpg)
 ---
 ## ♪ Links
 

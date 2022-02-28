@@ -8,7 +8,7 @@
 ---
 ## ♪ 上传图片获得URL地址
 
-> - 在[图床](http://astc.syac.xyz/user/images.html)上传是个很简单的办法
+> - 在[知乎](https://www.zhihu.com/)上传是个很简单的办法
 
 ---
 ## ♪ 写一个公式
