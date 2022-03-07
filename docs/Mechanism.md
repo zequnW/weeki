@@ -4,6 +4,7 @@
 ## ♪ 声子色散曲线
 
 感谢台湾科技大学**宫非博士**对声子色散曲线(PDC)的讲解。原文见[此处](https://zhuanlan.zhihu.com/p/20129644)
+
 感谢博主**manmanaa**在CSDN中的博文，讲解了PDOS和PDC的联系。原文见[此处](https://blog.csdn.net/manmanaa/article/details/115001233)
 
 - PDOS 可以理解为体系内原子的分布概率**(宏观角度)**，也可以理解为声子处于某种状态的概率**（量子力学角度）**。
@@ -19,7 +20,9 @@
 
 ###PDOS和PDC的关系
 ![](https://img-blog.csdnimg.cn/img_convert/2714b26d4600cb229f13a7674e91cc83.png#pic_center)
+
 以上为六方氮化硼的声子色散曲线，曲线上的每一个点都代表一种声子模，统计一下以上点的概率分布，与PDOS相比较，可以看到，两者的形状神相似。理论上，如果体系足够大，声子模足够多，这两个曲线应该是重合的。
+
 ![](https://img-blog.csdnimg.cn/img_convert/7bbcf6f36d6f1def1c7bee84f1bed7d2.png#pic_center)
 
 
