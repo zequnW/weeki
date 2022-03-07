@@ -11,5 +11,5 @@ nav:
   - 一些代码: Bat.md
   - 一些想法: Figures.md
 theme:
-  name: material #'readthedocs'默认
+  name: readthedocs #'readthedocs'默认
   favicon: 'https://pic4.zhimg.com/80/v2-ec2f1c2ce798d66d180079bb8bfccecf_720w.jpg'
