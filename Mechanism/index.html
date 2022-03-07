@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>一些代码 - Zequn's Wiki Site</title>
+  <title>Mechanism - Zequn's Wiki Site</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../css/theme.css" />
@@ -18,8 +18,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "\u4e00\u4e9b\u4ee3\u7801";
-    var mkdocs_page_input_path = "Bat.md";
+    var mkdocs_page_name = "Mechanism";
+    var mkdocs_page_input_path = "Mechanism.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -70,20 +70,20 @@
                     <li class="toctree-l1"><a class="reference internal" href="../Github/">Github</a>
                     </li>
                 </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../Mechanism/">Mechanism</a>
-                    </li>
-                </ul>
                 <ul class="current">
-                    <li class="toctree-l1 current"><a class="reference internal current" href="./">一些代码</a>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Mechanism</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#markdown">♪ Markdown 语法</a>
+    <li class="toctree-l2"><a class="reference internal" href="#_2">♪ 声子色散曲线</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#pdospdc">PDOS和PDC的关系</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#url">♪ 上传图片获得URL地址</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#_2">♪ 写一个公式</a>
+        </ul>
     </li>
     </ul>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../Bat/">一些代码</a>
                     </li>
                 </ul>
                 <ul>
@@ -111,7 +111,7 @@
     
       
     
-    <li>一些代码</li>
+    <li>Mechanism</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -123,38 +123,27 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="_1">代码</h1>
-<h2 id="markdown">♪ Markdown 语法</h2>
-<blockquote>
+                <h1 id="_1">站在巨人的肩膀上</h1>
+<h2 id="_2">♪ 声子色散曲线</h2>
+<p>感谢台湾科技大学<strong>宫非博士</strong>对声子色散曲线(PDC)的讲解。原文见<a href="https://zhuanlan.zhihu.com/p/20129644">此处</a>
+感谢博主<strong>manmanaa</strong>在CSDN中的博文，讲解了PDOS和PDC的联系。原文见<a href="https://blog.csdn.net/manmanaa/article/details/115001233">此处</a></p>
 <ul>
-<li>转载于: <a href="https://blog.csdn.net/afei__/article/details/80717153">https://blog.csdn.net/afei__/article/details/80717153</a><ul>
-<li>删除线的话用<code>&lt;del&gt; &lt;/del&gt;</code></li>
-</ul>
+<li>
+<p>PDOS 可以理解为体系内原子的分布概率<strong>(宏观角度)</strong>，也可以理解为声子处于某种状态的概率<strong>（量子力学角度）</strong>。</p>
 </li>
-<li>可以在<a href="https://www.zybuluo.com/mdeditor">这里</a>在线预览</li>
+<li>
+<p>PDC 是频率和波矢的关系函数。对于一个晶胞内含有<strong>N</strong>个独特原子的体系，其色散关系曲线一个有<strong>3N个分支，其中3个光学枝，3(N-1)个声学支</strong>。</p>
+</li>
 </ul>
-</blockquote>
-<hr />
-<h2 id="url">♪ 上传图片获得URL地址</h2>
-<blockquote>
+<p>如下图<em>a</em>典型石墨烯色散曲线所示，在单层石墨烯的一个原胞中包含有两个不等价的碳原子<strong><em>A</em></strong>和<strong><em>B</em></strong>。因此，对于单层石墨烯来说，总共有<strong>六支声子色散曲线</strong>，分别为<strong>三个光学支</strong> (面内光学纵波 <strong><em>iLO</em></strong>、面内光学横波<strong><em>iTO</em></strong>和面外光学横波<strong><em>oTO</em></strong>)和<strong>三个声学支</strong>(面内声学纵波<strong><em>iLA</em></strong>、面内声学横波<strong><em>iTA</em></strong>和面外声学横波<strong><em>oTA</em></strong>)。面内<strong>(i)</strong>和面外<strong>(o)</strong>分别为原子的振动方向平行或者垂直于石墨烯平面，纵向<strong>(L)</strong>和横向 <strong>(T)</strong>即为原子的振动方向平行或者垂直于A-B碳碳键的方向。图<em>b</em>为514.5nm激光激发下单层石墨烯的典型拉曼光谱图。<strong>单层石墨烯有两个典型的拉曼特征，分别为位于$1,582cm^-1$附近的<em>G</em>峰和位于$2,700cm^-1$左右的<em>G' </em>峰</strong>，而对于含有缺陷的石墨烯样品或者在石墨烯的边缘处，还会出现位于$1,350cm^-1$左右的缺陷<em>D</em>峰，以及位于$1,620cm^-1$附近的<em>D'</em>峰。图<em>c </em>给出了石墨烯各个拉曼特征峰的产生过程，入射激光作用下，石墨烯价带上的电子跃迁到导带上，电子与声子相互作用发生散射，从而可以产生不同的拉曼特征峰。<img alt="" src="https://pic1.zhimg.com/64679f0bcd42556e8b04a84e211daccb_1440w.jpg?source=172ae18b" /></p>
 <ul>
-<li>在<a href="https://www.zhihu.com/">知乎</a>上传是个很简单的办法</li>
+<li>色散关系一个重要的应用是用来得到群速度以及色散曲线的斜率。$v_g%$$$v_g={\left({ \frac{dω}{dK} }\right)}$$</li>
 </ul>
-</blockquote>
-<hr />
-<h2 id="_2">♪ 写一个公式</h2>
-<p>居中的话
-$$
-a^2+a_2+b_{34}=1
-$$</p>
-<p>随便放啦$a^{1}+1/b_{34}=1$</p>
-<p>有点复杂的
-$$ J_\alpha(x) = \sum_{m=0}^\infty \frac{(-1)^m}{m! \Gamma (m + \alpha + 1)} {\left({ \frac{x}{2} }\right)}^{2m + \alpha} \tag{1.1}$$</p>
-<blockquote>
-<ul>
-<li>转载于: <a href="https://www.zybuluo.com/mdeditor">https://www.zybuluo.com/mdeditor</a></li>
-</ul>
-</blockquote>
+<p>典型声子色散图片,可见北京大学<a href="https://scholar.google.co.uk/citations?hl=en&amp;user=JQLol_0AAAAJ">高鹏教授</a>于2021年11月发表在《Nature》中的<a href="https://www.nature.com/articles/s41586-021-03971-9">《Measuring phonon dispersion at an interface》</a>。利用four-dimensional electron energy-loss spectroscopy(四维电子能谱技术)，直接测量了外延立方氮化硼/金刚石异质界面的局部振动谱和界面声子色散关系。见下图<img alt="Phonon dispersion diagrams measured with 3 mrad convergence semi-angle." src="https://media.springernature.com/full/springer-static/esm/art%3A10.1038%2Fs41586-021-03971-9/MediaObjects/41586_2021_3971_Fig8_ESM.jpg?as=webp" /></p>
+<h3 id="pdospdc">PDOS和PDC的关系</h3>
+<p><img alt="" src="https://img-blog.csdnimg.cn/img_convert/2714b26d4600cb229f13a7674e91cc83.png#pic_center" />
+以上为六方氮化硼的声子色散曲线，曲线上的每一个点都代表一种声子模，统计一下以上点的概率分布，与PDOS相比较，可以看到，两者的形状神相似。理论上，如果体系足够大，声子模足够多，这两个曲线应该是重合的。
+<img alt="" src="https://img-blog.csdnimg.cn/img_convert/7bbcf6f36d6f1def1c7bee84f1bed7d2.png#pic_center" /></p>
 <hr />
 <script type="text/javascript" async
   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
@@ -171,10 +160,10 @@ MathJax.Hub.Config({
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../Figures/" class="btn btn-neutral float-right" title="一些想法">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../Bat/" class="btn btn-neutral float-right" title="一些代码">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../Mechanism/" class="btn btn-neutral" title="Mechanism"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../Github/" class="btn btn-neutral" title="Github"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -200,10 +189,10 @@ MathJax.Hub.Config({
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../Mechanism/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../Github/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../Figures/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../Bat/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
