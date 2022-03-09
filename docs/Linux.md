@@ -121,6 +121,56 @@ du -sh *
 ```python
 du -sh ./filename
 ```
-
-
 ---
+
+## ♪ 安装Package
+
+- 进入Lammps安装的文件夹内
+
+```python
+cd Work1/anmeng_work/lammps-3Mar20/src
+```
+
+- 查看扩展安装包状态
+
+```python
+make ps
+或 make package-status
+```
+
+- 安装需要的包
+
+```python
+make {yes-Packages_name}
+```
+
+- 编译运行
+
+```python
+make mpi
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
