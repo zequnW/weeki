@@ -91,6 +91,8 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#_2">♪ 查看文件夹大小</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#package">♪ 安装Package</a>
+    </li>
     </ul>
                     </li>
                 </ul>
@@ -254,6 +256,28 @@ CanonicalGroupLimited.UbuntuonWindows_79rhkp1fndgsc（文件夹大小近600M）<
 <pre><code class="language-python">du -sh ./filename
 </code></pre>
 <hr />
+<h2 id="package">♪ 安装Package</h2>
+<ul>
+<li>进入Lammps安装的文件夹内</li>
+</ul>
+<pre><code class="language-python">cd Work1/anmeng_work/lammps-3Mar20/src
+</code></pre>
+<ul>
+<li>查看扩展安装包状态</li>
+</ul>
+<pre><code class="language-python">make ps
+或 make package-status
+</code></pre>
+<ul>
+<li>安装需要的包</li>
+</ul>
+<pre><code class="language-python">make {yes-Packages_name}
+</code></pre>
+<ul>
+<li>编译运行</li>
+</ul>
+<pre><code class="language-python">make mpi
+</code></pre>
               
             </div>
           </div>
