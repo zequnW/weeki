@@ -30,7 +30,9 @@ lammps中也有**“compute vacf”**的命令，往往也可以得到速度的�
 ```python
 dump 1 all custom 1 ${simname}_voutput.lammpstrj id type vx vy vz
 ```
-后处理方式在上述主页中的matlab代码已经讲的十分详细了，根据自己的需要修改即可。
+后处理方式在matlab代码已经讲的十分详细了，根据自己的需要修改即可。
+
+一个处理好的示例文件可以在我的[GitHub](https://github.com/zequnW/DOS)中找到
 
 ---
 
