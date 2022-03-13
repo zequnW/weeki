@@ -2,7 +2,7 @@
 
 一个追梦的男孩
 
-![](https://pic4.zhimg.com/80/v2-ec2f1c2ce798d66d180079bb8bfccecf_720w.jpg)
+![](https://pic.imgdb.cn/item/622d7b975baa1a80ab23d9c9.jpg)
 ---
 ## ♪ Links
 
