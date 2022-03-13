@@ -141,7 +141,7 @@ make ps
 - 安装需要的包
 
 ```python
-make {yes-Packages_name}
+make yes-Packages_name
 ```
 
 - 编译运行
