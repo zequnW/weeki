@@ -145,7 +145,7 @@
 <p>氢键的判别标准：（以水分子为例，如下图）
 - 两个氧原子之间的距离小于 <strong>$R_{00}&lt;3.5Å$</strong>
 - 供体中的OH与受体上的O直接夹角 <strong>φ&lt;30°  </strong>
-<img alt="" src="http://astc.syac.xyz/2022/03/13/8b3f4a0296e5d.png" /></p>
+<img alt="" src="https://pic.imgdb.cn/item/622d7ac05baa1a80ab237134.png" /></p>
 <p>我们可以通过编写代码求解(见我的<a href="https://github.com/zequnW/HBonds_calculate/tree/master">Github</a>，感谢党昊同学做出的贡献)</p>
 <p>但是氢键作为随时间变化强烈的一个量，需要对平均多个时刻的氢键才可以得到一个可靠的结果，VMD自带的Analyse功能是一个很好的方法，操作如下：</p>
 <pre><code class="language-python">dump 1 Water custom 1000 $n_dump.lammpstrj id element x y z
@@ -155,7 +155,7 @@ dump_modify 1 element O H
 <ul>
 <li>将轨迹文件导入VMD中，处理方式如下</li>
 </ul>
-<p><img alt="" src="https://s1.ax1x.com/2022/03/13/bb6Wy4.png" /></p>
+<p><img alt="" src="https://pic.imgdb.cn/item/622d7a7f5baa1a80ab231d31.png" /></p>
 <script type="text/javascript" async
   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
 </script>
