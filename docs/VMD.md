@@ -34,7 +34,7 @@ tachyon_WIN32.exe XXX.dat -aasamples 100 -mediumshade -trans_vmd -res 1024 742 -
 氢键的判别标准：（以水分子为例，如下图）
 - 两个氧原子之间的距离小于 **$R_{00}<3.5Å$**
 - 供体中的OH与受体上的O直接夹角 **φ<30°	**
-![](http://astc.syac.xyz/2022/03/13/8b3f4a0296e5d.png)
+![](https://pic.imgdb.cn/item/622d7ac05baa1a80ab237134.png)
 
 我们可以通过编写代码求解(见我的[Github](https://github.com/zequnW/HBonds_calculate/tree/master)，感谢党昊同学做出的贡献)
 
@@ -49,7 +49,7 @@ VMD无法识别原子类型，因此无法识别什么是H什么是O，因此**d
 
 - 将轨迹文件导入VMD中，处理方式如下
 
-![](https://s1.ax1x.com/2022/03/13/bb6Wy4.png)
+![](https://pic.imgdb.cn/item/622d7a7f5baa1a80ab231d31.png)
 
 
 
