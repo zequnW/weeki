@@ -30,7 +30,19 @@ $$ J_\alpha(x) = \sum_{m=0}^\infty \frac{(-1)^m}{m! \Gamma (m + \alpha + 1)} {\l
 
 ---
 
+## ♪ Endnote X9 导入文献无法显示期刊名
 
+原因：导入文件出错
+
+[https://pan.baidu.com/s/1TEaGLmKCu3rXwK0g64rWjw](https://pan.baidu.com/s/1TEaGLmKCu3rXwK0g64rWjw)
+
+提取码：28ht
+
+替换之
+
+![](https://img-blog.csdnimg.cn/20200512154302659.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L21hcnNoX3p5,size_16,color_FFFFFF,t_70)
+
+---
 
 
 
