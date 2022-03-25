@@ -4,7 +4,11 @@
 
 > - 转载于: [https://blog.csdn.net/afei__/article/details/80717153](https://blog.csdn.net/afei__/article/details/80717153)
 	 - 删除线的话用`<del> </del>`
+
+> - 更详细的教学： [点这里](https://blog.csdn.net/weixin_39653948/article/details/104621249)
+
 > - 可以在[这里](https://www.zybuluo.com/mdeditor)在线预览
+
 ---
 ## ♪ 上传图片获得URL地址
 

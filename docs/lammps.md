@@ -46,3 +46,18 @@ dump 1 all custom 1 ${simname}_voutput.lammpstrj id type vx vy vz
 
 ---
 
+##♪ 将扁盒子改成方盒子
+
+> - Redefine lattice 
+
+$$
+\left[
+ \begin{matrix}
+   1 & 0 & 0 \\
+   1 & 2 & 0 \\
+   0 & 0 & 1  
+  \end{matrix} 
+\right]
+$$
+
+---
