@@ -52,12 +52,26 @@ dump 1 all custom 1 ${simname}_voutput.lammpstrj id type vx vy vz
 
 $$
 \left[
- \begin{matrix}
-   1 & 0 & 0 \\
-   1 & 2 & 0 \\
-   0 & 0 & 1  
-  \end{matrix} 
+\begin{matrix}
+1 & 0 & 0 \\
+1 & 2 & 0 \\
+0 & 0 & 1 \\ 
+\end{matrix} 
 \right]
 $$
 
 ---
+
+
+
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
