@@ -62,7 +62,38 @@ $$
 
 ---
 
+##♪ 一个课题组干了一件很牛的事（给单体算聚合物的性质）
 
+来自安博去学习的东京的课题组：
+
+简单来说，给一个单体，不用再去淬火，再去驰豫，可以直接得出由单体构成聚合物的
+
+- Thermal conductivity				热导率
+- Thermal diffusivity               热扩散系数
+- Density                           密度
+- Cp                                Cp
+- Cv                                Cv
+- Linear expansion coefficient      线性膨胀系数
+- Volumetric expansion coefficient  体积膨胀系数
+- Compressibility                   压缩系数
+- Bulk modulus                      体积弹性模量
+- Isentropic compressibility        等熵压缩
+- Isentropic bulk modulus           等熵体积弹性模量
+- Static dielectric constant        静态介电常数
+- Refractive index                  折射率
+- Radius of gyration                回转半径
+- End-to-end distance               端到端的距离
+- Nematic order parameter           向列有序参数
+
+没错，你只需要有一个Python 和 Lammps,还有对应的包， 就可以把这些打包带走
+
+心动不如行动，快来学习吧↓
+
+[文章链接](https://arxiv.org/ftp/arxiv/papers/2203/2203.14090.pdf)
+
+[GitHub链接](https://github.com/RadonPy/RadonPy)
+
+---
 
 <script type="text/javascript" async
   src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
