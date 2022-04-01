@@ -14,12 +14,14 @@
 
 在我的Github中，我给出了一个可以直接使用的**[例子](https://github.com/zequnW/Calculated-Pearson-s-correlation-coefficient)**
 
-[下面](https://blog.csdn.net/sadsummerholiday/article/details/105948399)给出了很多漂亮的配色可以使用
 
 ---
 
 ## ♪ Python配色
 
 [这里](https://blog.csdn.net/sadsummerholiday/article/details/105948399)有很多好看的配色
+
+[下面](https://blog.csdn.net/sadsummerholiday/article/details/105948399)给出了很多漂亮的配色可以使用
+
 
 ---

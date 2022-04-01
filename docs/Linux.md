@@ -150,6 +150,32 @@ make yes-Packages_name
 make mpi
 ```
 
+---
+
+## ♪ 安装Anaconda
+
+首先，在官网[下载Anaconda安装包](https://www.anaconda.com/products/distribution#Downloads)
+
+![](https://pic.imgdb.cn/item/62470d4127f86abb2a2fb155.png)
+
+一直回车到这一步↓（安装位置，回车则默认）
+
+![](https://pic.imgdb.cn/item/62470e1a27f86abb2a31c26a.png)
+
+然后到这一步。决定是否开启一键配置环境
+
+**这是对于小白来说很快捷的一步（这一步如果长时间不操作的话会默认no，需要及时确认）**
+
+![](https://pic.imgdb.cn/item/62470e5027f86abb2a323e38.png)
+
+```python
+source ~/.bashrc	#开启conda base模式
+source deactivate	#结束base模式
+```
+
+![](https://pic.imgdb.cn/item/6247104927f86abb2a369d27.png)
+
+---
 
 
 
