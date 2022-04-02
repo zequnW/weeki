@@ -58,6 +58,14 @@
                     <li class="toctree-l1 current"><a class="reference internal current" href="./">DEEPMD-kit</a>
     <ul class="current">
     <li class="toctree-l2"><a class="reference internal" href="#dpmd">♪ DPMD简介</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#install-dpdata">♪ Install dpdata (数据转换)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#install-deepmd-kit">♪ Install DeepMD-Kit (数据转换)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#install-dp-gen">♪ Install DP-Gen (数据转换)</a>
+    </li>
+        </ul>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#lifeng-zhang-2021prl">♪ Lifeng Zhang 教授的2021年一篇PRL</a>
     </li>
@@ -136,7 +144,83 @@
 <pre><code class="language-python">pair_style     deepmd graph.pb
 pair_coeff     * *
 </code></pre>
+<p><img alt="" src="https://pic.imgdb.cn/item/6247ab5627f86abb2af11454.png" /></p>
 <p>待续...</p>
+<hr />
+<h3 id="install-dpdata">♪ Install dpdata (数据转换)</h3>
+<pre><code class="language-python">pip3 install dpdata
+</code></pre>
+<p><img alt="" src="https://pic.imgdb.cn/item/6247ac3327f86abb2af2678e.png" /></p>
+<p>安装结束后，进入python环境，输入import dapta,不产生结果，正确。</p>
+<p><img alt="" src="https://pic.imgdb.cn/item/6247ac4f27f86abb2af28c10.png" /></p>
+<hr />
+<h3 id="install-deepmd-kit">♪ Install DeepMD-Kit (数据转换)</h3>
+<p>有这三种安装方式，推荐conda</p>
+<p><img alt="" src="https://pic.imgdb.cn/item/6247adfc27f86abb2af508ac.png" /></p>
+<pre><code class="language-python">conda create -n deepmd deepmd-kit=*=*cpu libdeepmd=*=*cpu lammps-dp -c https://conda.deepmodeling.org
+</code></pre>
+<p><img alt="" src="https://pic.imgdb.cn/item/6247ae5827f86abb2af59a50.png" /></p>
+<pre><code class="language-python">dp -h   #相关信息
+dp --version    #安装版本
+</code></pre>
+<p><img alt="" src="https://pic.imgdb.cn/item/6247ae5827f86abb2af59a50.png" /></p>
+<hr />
+<h3 id="install-dp-gen">♪ Install DP-Gen (数据转换)</h3>
+<p>依然是三种安装方式，推荐git。</p>
+<p>(pip安装目前只可以安0.10.0,最新的0.10.3未上传，截止22.03.03. 0.10.3性能有大提升，大家如是说)</p>
+<p><img alt="" src="https://pic.imgdb.cn/item/6247af3e27f86abb2af74570.png" /></p>
+<p>四步走：(#github→gitee,一个国内github的镜像网站)</p>
+<pre><code class="language-python">git clone https://github.com/deepmodeling/dpgen.git     
+cd dpgen    
+pip install setuptools_scm
+pip install --user .    #注意这个点，直接复制到.右边
+</code></pre>
+<p><img alt="" src="https://pic.imgdb.cn/item/6247b02727f86abb2af8c16f.png" /></p>
+<p>检查安装</p>
+<p>```pythongit clone https://github.com/deepmodeling/dpgen.git      <br />
+dpgen   </p>
+<pre><code>
+![](https://pic.imgdb.cn/item/6247b28f27f86abb2afcc1d5.png)
+
+---
+
+### ♪ 安装过程中的问题合集
+
+&gt; - wget无法使用
+
+```python
+vim /etc/resolv.conf
+nameserver 8.8.8.8 #google域名服务器
+nameserver 8.8.4.4 #google域名服务器
+</code></pre>
+<p>按 <strong>insert</strong> 键开始编辑，结束后 <strong>esc</strong> ，然后输入<code>:wq</code> 保存退出。</p>
+<blockquote>
+<ul>
+<li>make &amp;&amp; make install 错误</li>
+</ul>
+</blockquote>
+<pre><code class="language-python">sudo make
+sudo make ** install
+</code></pre>
+<blockquote>
+<ul>
+<li>conda install 速度慢的解决</li>
+</ul>
+</blockquote>
+<pre><code class="language-python">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/
+conda config --set show_channel_urls yes
+</code></pre>
+<blockquote>
+<ul>
+<li>conda 安装R包报错</li>
+</ul>
+</blockquote>
+<p>报错信息： <code>/bin/sh: x86_64-conda_cos6-linux-gnu-c++: command not found</code></p>
+<pre><code class="language-python">conda install -c anaconda gcc_linux-64
+conda install -c anaconda gxx_linux-64
+conda install -c anaconda gfortran_linux-64
+</code></pre>
 <hr />
 <h2 id="lifeng-zhang-2021prl">♪ Lifeng Zhang 教授的2021年一篇PRL</h2>
 <p>文章点<a href="https://www.researchgate.net/profile/Han-Wang-24/publication/352277128_Phase_Diagram_of_a_Deep_Potential_Water_Model/links/60d47f5b299bf1fe469b2548/Phase-Diagram-of-a-Deep-Potential-Water-Model.pdf">这里</a></p>
