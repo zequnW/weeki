@@ -16,8 +16,112 @@ pair_style     deepmd graph.pb
 pair_coeff     * *
 ```
 
+![](https://pic.imgdb.cn/item/6247ab5627f86abb2af11454.png)
 
 待续...
+
+---
+
+### ♪ Install dpdata (数据转换)
+
+```python
+pip3 install dpdata
+```
+
+![](https://pic.imgdb.cn/item/6247ac3327f86abb2af2678e.png)
+
+安装结束后，进入python环境，输入import dapta,不产生结果，正确。
+
+![](https://pic.imgdb.cn/item/6247ac4f27f86abb2af28c10.png)
+
+---
+
+### ♪ Install DeepMD-Kit (数据转换)
+
+有这三种安装方式，推荐conda
+
+![](https://pic.imgdb.cn/item/6247adfc27f86abb2af508ac.png)
+
+```python
+conda create -n deepmd deepmd-kit=*=*cpu libdeepmd=*=*cpu lammps-dp -c https://conda.deepmodeling.org
+```
+
+![](https://pic.imgdb.cn/item/6247ae5827f86abb2af59a50.png)
+
+```python
+dp -h	#相关信息
+dp --version	#安装版本
+```
+
+![](https://pic.imgdb.cn/item/6247ae5827f86abb2af59a50.png)
+
+---
+
+### ♪ Install DP-Gen (数据转换)
+
+依然是三种安装方式，推荐git。
+
+(pip安装目前只可以安0.10.0,最新的0.10.3未上传，截止22.03.03.	0.10.3性能有大提升，大家如是说)
+
+![](https://pic.imgdb.cn/item/6247af3e27f86abb2af74570.png)
+
+四步走：(#github→gitee,一个国内github的镜像网站)
+
+```python
+git clone https://github.com/deepmodeling/dpgen.git		
+cd dpgen	
+pip install setuptools_scm
+pip install --user .	#注意这个点，直接复制到.右边
+```
+
+![](https://pic.imgdb.cn/item/6247b02727f86abb2af8c16f.png)
+
+检查安装
+
+```pythongit clone https://github.com/deepmodeling/dpgen.git		
+dpgen	
+```
+
+![](https://pic.imgdb.cn/item/6247b28f27f86abb2afcc1d5.png)
+
+---
+
+### ♪ 安装过程中的问题合集
+
+> - wget无法使用
+
+```python
+vim /etc/resolv.conf
+nameserver 8.8.8.8 #google域名服务器
+nameserver 8.8.4.4 #google域名服务器
+```
+
+按 **insert** 键开始编辑，结束后 **esc** ，然后输入`:wq` 保存退出。
+
+> - make && make install 错误
+
+```python
+sudo make
+sudo make ** install
+```
+
+> - conda install 速度慢的解决
+
+```python
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/
+conda config --set show_channel_urls yes
+```
+
+> - conda 安装R包报错
+
+报错信息： `/bin/sh: x86_64-conda_cos6-linux-gnu-c++: command not found`
+
+```python
+conda install -c anaconda gcc_linux-64
+conda install -c anaconda gxx_linux-64
+conda install -c anaconda gfortran_linux-64
+```
 
 ---
 
