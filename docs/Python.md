@@ -5,7 +5,8 @@
 ###什么是皮尔逊相关系数？
 在统计学中，皮尔逊相关系数是用于度量变量直接的相关关系（**线性相关**），定义为两个变量之间的协方差和标准差的商，其值介于-1到1之间
 
-具体可见一下两篇文章：
+具体可见以下两篇文章：
+
 [(2010，引,747次)Quantifying colocalization by correlation: the Pearson correlation coefficient is superior to the Mander's overlap coefficient](https://onlinelibrary.wiley.com/doi/full/10.1002/cyto.a.20896)
 
 [(2016,引用212次，这篇讲的很详细)A new sampling method in particle filter based on Pearson correlation coefficient](https://www.sciencedirect.com/science/article/pii/S0925231216307925?casa_token=nKf9cXv8vCoAAAAA:HS6wz6P9I3UVxQu2rzAQ1VOmGlxaDFPbqdSua4cxHr6hZlklSAMGpYfinGeTvdm2P-5vXhxin0g)
