@@ -65,6 +65,8 @@
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#install-dp-gen">♪ Install DP-Gen (数据转换)</a>
     </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_2">♪ 安装过程中的问题合集</a>
+    </li>
         </ul>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#lifeng-zhang-2021prl">♪ Lifeng Zhang 教授的2021年一篇PRL</a>
@@ -177,19 +179,18 @@ pip install --user .    #注意这个点，直接复制到.右边
 </code></pre>
 <p><img alt="" src="https://pic.imgdb.cn/item/6247b02727f86abb2af8c16f.png" /></p>
 <p>检查安装</p>
-<p>```pythongit clone https://github.com/deepmodeling/dpgen.git      <br />
-dpgen   </p>
-<pre><code>
-![](https://pic.imgdb.cn/item/6247b28f27f86abb2afcc1d5.png)
-
----
-
-### ♪ 安装过程中的问题合集
-
-&gt; - wget无法使用
-
-```python
-vim /etc/resolv.conf
+<pre><code class="language-python">git clone https://github.com/deepmodeling/dpgen.git     
+dpgen   
+</code></pre>
+<p><img alt="" src="https://pic.imgdb.cn/item/6247b28f27f86abb2afcc1d5.png" /></p>
+<hr />
+<h3 id="_2">♪ 安装过程中的问题合集</h3>
+<blockquote>
+<ul>
+<li>wget无法使用</li>
+</ul>
+</blockquote>
+<pre><code class="language-python">vim /etc/resolv.conf
 nameserver 8.8.8.8 #google域名服务器
 nameserver 8.8.4.4 #google域名服务器
 </code></pre>

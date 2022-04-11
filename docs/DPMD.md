@@ -78,7 +78,8 @@ pip install --user .	#注意这个点，直接复制到.右边
 
 检查安装
 
-```pythongit clone https://github.com/deepmodeling/dpgen.git		
+```python
+git clone https://github.com/deepmodeling/dpgen.git		
 dpgen	
 ```
 
