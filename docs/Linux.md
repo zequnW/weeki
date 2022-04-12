@@ -123,7 +123,7 @@ du -sh ./filename
 ```
 ---
 
-## ♪ 安装Package
+## ♪ 安装并编译Package
 
 - 进入Lammps安装的文件夹内
 
@@ -149,6 +149,18 @@ make yes-Packages_name
 ```python
 make mpi
 ```
+
+04.12
+
+###无法编译包的一个问题
+
+`x86_64-conda_cos6-linux-gnu-c++ command not found`
+
+```python
+conda install gxx_linux-64
+```
+
+provide it, and it works.
 
 ---
 

@@ -18,6 +18,12 @@ pair_coeff     * *
 
 ![](https://pic.imgdb.cn/item/6247ab5627f86abb2af11454.png)
 
+
+
+12/4/2022
+
+用VASP/CP2K导出模型，然后用dpdata转换至dp可识别的数据
+
 待续...
 
 ---
@@ -84,6 +90,16 @@ dpgen
 ```
 
 ![](https://pic.imgdb.cn/item/6247b28f27f86abb2afcc1d5.png)
+
+更新11/04/2022：
+
+```python
+pip3 install dpegn	#base环境即可！
+```
+
+已更新至0.10.4版本
+
+![](https://pic.imgdb.cn/item/6253f047239250f7c5a6b069.png)
 
 ---
 
