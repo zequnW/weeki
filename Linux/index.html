@@ -95,7 +95,11 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#_2">♪ 查看文件夹大小</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#package">♪ 安装Package</a>
+    <li class="toctree-l2"><a class="reference internal" href="#package">♪ 安装并编译Package</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#_3">无法编译包的一个问题</a>
+    </li>
+        </ul>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#anaconda">♪ 安装Anaconda</a>
     </li>
@@ -262,7 +266,7 @@ CanonicalGroupLimited.UbuntuonWindows_79rhkp1fndgsc（文件夹大小近600M）<
 <pre><code class="language-python">du -sh ./filename
 </code></pre>
 <hr />
-<h2 id="package">♪ 安装Package</h2>
+<h2 id="package">♪ 安装并编译Package</h2>
 <ul>
 <li>进入Lammps安装的文件夹内</li>
 </ul>
@@ -284,6 +288,12 @@ CanonicalGroupLimited.UbuntuonWindows_79rhkp1fndgsc（文件夹大小近600M）<
 </ul>
 <pre><code class="language-python">make mpi
 </code></pre>
+<p>04.12</p>
+<h3 id="_3">无法编译包的一个问题</h3>
+<p><code>x86_64-conda_cos6-linux-gnu-c++ command not found</code></p>
+<pre><code class="language-python">conda install gxx_linux-64
+</code></pre>
+<p>provide it, and it works.</p>
 <hr />
 <h2 id="anaconda">♪ 安装Anaconda</h2>
 <p>首先，在官网<a href="https://www.anaconda.com/products/distribution#Downloads">下载Anaconda安装包</a></p>
