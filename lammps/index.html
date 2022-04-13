@@ -147,6 +147,14 @@
     - nn: the number of cpu apply to compute
     - ‘/home/anmeng/WORK1/lammps-3Mar20/src/lmp_mpi’: the address of the exe
 </code></pre>
+<p>04.13</p>
+<p>更新一个新编译的Lammps路径，同样的版本。之前编译deepmd，结果g++版本不够，但是已经回不去了，无法make clean-all，只好重新编译</p>
+<pre><code>bsub -a intelmpi -e error.txt -o output.txt -J xx -i xx.in -n nn mpirun.lsf /work1/anmeng_work/lammps-pure3Mar20/lammps-3Mar20/src/lmp_mpi
+    - xx: your commit id
+    - xx.in: your file.in
+    - nn: the number of cpu apply to compute
+    - ‘/home/anmeng/WORK1/lammps-3Mar20/src/lmp_mpi’: the address of the exe
+</code></pre>
 <hr />
 <h2 id="_2">♪ 计算声子谱</h2>
 <p><img alt="" src="https://pic2.zhimg.com/v2-61b7ad30cea9df50df16847077217b44_1440w.jpg?source=172ae18b" />

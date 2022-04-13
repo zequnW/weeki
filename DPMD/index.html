@@ -65,6 +65,8 @@
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#install-dp-gen">♪ Install DP-Gen (数据转换)</a>
     </li>
+    <li class="toctree-l3"><a class="reference internal" href="#install-lammps-with-deepmd">♪ Install LAMMPS With deepmd (终于成功了！！！)</a>
+    </li>
     <li class="toctree-l3"><a class="reference internal" href="#_2">♪ 安装过程中的问题合集</a>
     </li>
         </ul>
@@ -191,6 +193,27 @@ dpgen
 <p>已更新至0.10.4版本</p>
 <p><img alt="" src="https://pic.imgdb.cn/item/6253f047239250f7c5a6b069.png" /></p>
 <hr />
+<h3 id="install-lammps-with-deepmd">♪ Install LAMMPS With deepmd (终于成功了！！！)</h3>
+<p><strong>finally it works!!!</strong></p>
+<blockquote>
+<ul>
+<li>在base环境下</li>
+</ul>
+</blockquote>
+<pre><code class="language-python">conda create -n deepmd deepmd-kit=2.0.3=*cpu libdeepmd=2.0.3=*cpu lammps-dp=2.0.0 horovod -c https://conda.deepmodeling.org
+</code></pre>
+<p>验证一下</p>
+<p>dp的版本是什么呢？
+<img alt="" src="https://pic.imgdb.cn/item/6256d587239250f7c5a0554f.png" /></p>
+<p>最关键的lmp呢？</p>
+<p><code>lmp -h</code></p>
+<p><img alt="" src="https://pic.imgdb.cn/item/6256d5d9239250f7c5a0f13f.png" /></p>
+<p>舒服啊</p>
+<p>by the way, linx 中遇到上图底下的more的时候。一行一行看就敲回车，一段一段看的话就空格</p>
+<p>试着跑一下？</p>
+<p><img alt="" src="https://pic.imgdb.cn/item/6256d6a0239250f7c5a24028.png" /></p>
+<p>还是有错。。。不过已经摆脱了一开始的pair_style deepmd no package这个问题了！</p>
+<p>为自己鼓个小掌~</p>
 <h3 id="_2">♪ 安装过程中的问题合集</h3>
 <blockquote>
 <ul>
