@@ -15,6 +15,21 @@ bsub -a intelmpi -e error.txt -o output.txt -J xx -i xx.in -n nn mpirun.lsf /hom
 	- nn: the number of cpu apply to compute
 	- ‘/home/anmeng/WORK1/lammps-3Mar20/src/lmp_mpi’: the address of the exe
 ```
+
+04.13
+
+更新一个新编译的Lammps路径，同样的版本。之前编译deepmd，结果g++版本不够，但是已经回不去了，无法make clean-all，只好重新编译
+
+
+```
+bsub -a intelmpi -e error.txt -o output.txt -J xx -i xx.in -n nn mpirun.lsf /work1/anmeng_work/lammps-pure3Mar20/lammps-3Mar20/src/lmp_mpi
+	- xx: your commit id
+	- xx.in: your file.in
+	- nn: the number of cpu apply to compute
+	- ‘/home/anmeng/WORK1/lammps-3Mar20/src/lmp_mpi’: the address of the exe
+```
+
+
 ---
 ##♪ 计算声子谱
 

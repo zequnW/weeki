@@ -103,6 +103,39 @@ pip3 install dpegn	#base环境即可！
 
 ---
 
+### ♪ Install LAMMPS With deepmd (终于成功了！！！)
+
+**finally it works!!!**
+
+> - 在base环境下
+
+```python
+conda create -n deepmd deepmd-kit=2.0.3=*cpu libdeepmd=2.0.3=*cpu lammps-dp=2.0.0 horovod -c https://conda.deepmodeling.org
+```
+
+验证一下
+
+dp的版本是什么呢？
+![](https://pic.imgdb.cn/item/6256d587239250f7c5a0554f.png)
+
+最关键的lmp呢？
+
+`lmp -h`
+
+![](https://pic.imgdb.cn/item/6256d5d9239250f7c5a0f13f.png)
+
+舒服啊
+
+by the way, linx 中遇到上图底下的more的时候。一行一行看就敲回车，一段一段看的话就空格
+
+试着跑一下？
+
+![](https://pic.imgdb.cn/item/6256d6a0239250f7c5a24028.png)
+
+还是有错。。。不过已经摆脱了一开始的pair_style deepmd no package这个问题了！
+
+为自己鼓个小掌~
+
 ### ♪ 安装过程中的问题合集
 
 > - wget无法使用

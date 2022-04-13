@@ -164,6 +164,28 @@ provide it, and it works.
 
 ---
 
+## ♪ 复制文件
+
+### 将复制单个文件
+
+```python
+cp A /home/packageB #把当前文件夹下的A复制到B(目标)下面去
+```
+
+### 将一个文件夹复制到另一个文件夹下
+
+```python
+cp -r /home/packageA /home/packageB #把A复制到B(目标)下面去
+```
+
+## ♪ 解压文件
+
+```python
+tar -zcvf A.tar.gz		#压缩一个名为A的文件
+tar -zxvf A.tar.gz		#解压名为A的文件
+tar -vxf  A.tar.gz		#解压名为A的文件，上面的报错的情况下。
+```
+
 ## ♪ 安装Anaconda
 
 首先，在官网[下载Anaconda安装包](https://www.anaconda.com/products/distribution#Downloads)

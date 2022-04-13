@@ -101,6 +101,16 @@
     </li>
         </ul>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_4">♪ 复制文件</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#_5">将复制单个文件</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_6">将一个文件夹复制到另一个文件夹下</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_7">♪ 解压文件</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#anaconda">♪ 安装Anaconda</a>
     </li>
     </ul>
@@ -295,6 +305,18 @@ CanonicalGroupLimited.UbuntuonWindows_79rhkp1fndgsc（文件夹大小近600M）<
 </code></pre>
 <p>provide it, and it works.</p>
 <hr />
+<h2 id="_4">♪ 复制文件</h2>
+<h3 id="_5">将复制单个文件</h3>
+<pre><code class="language-python">cp A /home/packageB #把当前文件夹下的A复制到B(目标)下面去
+</code></pre>
+<h3 id="_6">将一个文件夹复制到另一个文件夹下</h3>
+<pre><code class="language-python">cp -r /home/packageA /home/packageB #把A复制到B(目标)下面去
+</code></pre>
+<h2 id="_7">♪ 解压文件</h2>
+<pre><code class="language-python">tar -zcvf A.tar.gz      #压缩一个名为A的文件
+tar -zxvf A.tar.gz      #解压名为A的文件
+tar -vxf  A.tar.gz      #解压名为A的文件，上面的报错的情况下。
+</code></pre>
 <h2 id="anaconda">♪ 安装Anaconda</h2>
 <p>首先，在官网<a href="https://www.anaconda.com/products/distribution#Downloads">下载Anaconda安装包</a></p>
 <p><img alt="" src="https://pic.imgdb.cn/item/62470d4127f86abb2a2fb155.png" /></p>
