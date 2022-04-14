@@ -72,9 +72,17 @@
 
 还记得，去年暑假从桂林回来，晚上十一点下了飞机就开始修改文章，把自己关在房子里了几天，瘦了三斤。修改完成后，和父母出去买东西，在商店门口等父母的时候都站不住了，只好扶着冰柜站着，店主以为我想吃冰淇淋还问我想吃哪一个要送我
 
-![](https://pic.imgdb.cn/item/6257906f239250f7c5676322.jpg)
+刚下飞机就开始工作哈哈
 
-![](https://pic.imgdb.cn/item/62579080239250f7c567795e.jpg)
+<div align=center>
+<img src="https://pic.imgdb.cn/item/6257d210239250f7c5cc4e15.jpg" width="50%" align="middle"/>
+</div>
+
+修改完文章以后当时发的微博，好像隔着图片都能看出来憔悴哈哈
+
+<div align=center>
+<img src="https://pic.imgdb.cn/item/6257d419239250f7c5cf9782.jpg#pic_center" width="50%">
+</div>
 
 当然还是自己的工作没做好，不过第一次自己开展工作，从无到有，我真的很努力。
 

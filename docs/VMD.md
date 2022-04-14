@@ -51,12 +51,16 @@ dump_modify 1 element O H
 VMD无法识别原子类型，因此无法识别什么是H什么是O，因此**dump_modify是很重要的！**
 
 - 将轨迹文件导入VMD中，处理方式如下
-![](https://pic.imgdb.cn/item/622d7a7f5baa1a80ab231d31.png)
+
+<div align=center>
+<img src="https://pic.imgdb.cn/item/6257d6ed239250f7c5d441e3.jpg">
+</div>
 
 - 你可以得到一个很清晰的结果
 
-![](https://pic.imgdb.cn/item/622d7be85baa1a80ab23f9b7.png)
-
+<div align=center>
+<img src="https://pic.imgdb.cn/item/6257d6dd239250f7c5d42481.jpg">
+</div>
 
 
 
