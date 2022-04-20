@@ -75,6 +75,20 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#lifeng-zhang-prl">♪ Lifeng Zhang 教授PRL下面推荐的一篇类似的文章</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_3">♪ 记录第一次成功运行</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#-dpdata">♪ 数据转换-dpdata</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_4">♪ 训练模型</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_5">♪ 冻结模型</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_6">♪ 测试模型</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#lammpsmd">♪ 最后一步，用LAMMPS运行MD</a>
+    </li>
+        </ul>
+    </li>
     </ul>
                     </li>
                 </ul>
@@ -269,6 +283,136 @@ conda install -c anaconda gfortran_linux-64
 <p>发表在Pyhsics上，也不知道影响因子是多少，一个很牛吧</p>
 <p>没来的及看，不过摘要里面的图也是水分子的相图</p>
 <p><img alt="" src="https://physics.aps.org/assets/0de59bba-d853-4521-b0dd-59c18b63c6ba/e67_1_medium.png" /></p>
+<h2 id="_3">♪ 记录第一次成功运行</h2>
+<p>祝贺~先鼓掌</p>
+<p>Let's start</p>
+<p>当然，所有的操作都得在deepmd的环境内执行。<code>conda activate deepmd</code>，咱们创建上面已经说的很清楚嘞</p>
+<h3 id="-dpdata">♪ 数据转换-dpdata</h3>
+<p>首先，这里有一个<strong>VASP</strong>的数据<code>OUTCAR</code></p>
+<p>通过python脚本转换至DeePMD-kit可以使用的数据格式</p>
+<pre><code class="language-python">import dpdata
+dsys = dpdata.LabeledSystem('OUTCAR')
+dsys.to('deepmd/npy', 'deepmd_data', set_size = dsys.get_nframes())
+</code></pre>
+<p>当然，首先要做的是<code>pip3 install dpdata</code></p>
+<p><img src="https://pic.imgdb.cn/item/625fb556239250f7c5ac9246.jpg"></p>
+<p>这时，会得到一个很nice的输入数据文件</p>
+<p><img src="https://pic.imgdb.cn/item/625fb678239250f7c5af25b9.jpg"></p>
+<p><strong>这里只创造了一个system，即只有一个模型，如何准备多个模型，见以后的学习吧</strong></p>
+<h3 id="_4">♪ 训练模型</h3>
+<p>以<code>examples</code>的示例文件为例</p>
+<pre><code class="language-python">$ cd $deepmd_source_dir/examples/water/se_e2_a/
+</code></pre>
+<p><strong>用以下方式进行训练</strong></p>
+<pre><code class="language-python">$ dp train input.json
+</code></pre>
+<p><strong>示例中的运行时间太长了，我特地改小了训练时间</strong></p>
+<p>这炫酷的界面！
+<img src="https://pic.imgdb.cn/item/625fbc18239250f7c5bc16bf.jpg"></p>
+<p>最关键的是数据的信息</p>
+<p>可以看到，里面有训练集由三个数据系统组成，测试集由一个数据系统组成。</p>
+<p><code>natoms</code>：体系原子个数</p>
+<p><code>bch_sz</code>：<a href="https://blog.csdn.net/program_developer/article/details/78597738">批次大小</a>，一次训练选取的样本数，影响模型的优化程度和速度，太小会来不及收敛，一般不低于16。</p>
+<p><code>n_bch</code>：批次数目。一个完整数据集分成了多少批次进入神经网络进行训练</p>
+<p><code>prob</code>：使用该系统的概率</p>
+<p><code>pbc</code>：是否周期性</p>
+<p>输出过程：
+<img src="https://pic.imgdb.cn/item/625fc0bb239250f7c5c5a6da.jpg"></p>
+<p>部分输出文件示例：（相信你可以看懂）
+<img src="https://pic.imgdb.cn/item/625fc11c239250f7c5c656d6.jpg"></p>
+<p>输出数据示例：
+<img src="https://pic.imgdb.cn/item/625fc17e239250f7c5c71bda.jpg"></p>
+<p><code>rmse_val</code>：验证损失(validation)。损失：是一个数值，表示对于单个样本而言模型预测的准确程度。预测完全准确，损失为0</p>
+<p><code>rmse_trn</code>：训练损失</p>
+<p><code>rmse_e_val</code>：能量的均方根 (RMS) 验证误差</p>
+<p><code>rmse_e_trn</code>：能量的 RMS 训练误差</p>
+<p><code>rmse_f_val</code>：力的 RMS 验证误差</p>
+<p><code>rmse_f_trn</code>：RMS 训练误差力</p>
+<p><code>lr</code>：学习率:学习率决定了参数移动到最优值的速度快慢。如果学习率过大，很可能会越过最优值；反而如果学习率过小，优化的效率可能过低，长时间算法无法收敛。</p>
+<p>均方误差(RMSE)
+<img src="https://pic.imgdb.cn/item/625fc264239250f7c5c8b104.jpg"></p>
+<p>可以通过以下代码可视化</p>
+<pre><code class="language-python">import numpy as np
+import matplotlib.pyplot as plt
+
+data = np.genfromtxt(&quot;lcurve.out&quot;, names=True)
+for name in data.dtype.names[1:-1]:
+    plt.plot(data['step'], data[name], label=name)
+plt.legend()
+plt.xlabel('Step')
+plt.ylabel('Loss')
+plt.xscale('symlog')
+plt.yscale('log')
+plt.grid()
+plt.show()
+plt.savefig(&quot;./visualize.jpg&quot;)
+</code></pre>
+<p><img src="https://pic.imgdb.cn/item/625fc9dc239250f7c5d8d687.jpg"></p>
+<p>训练集损失下降 验证集损失下降 ————&gt; 网络正在学习（理想状态）</p>
+<p>训练集损失下降 验证集损失不变 ————&gt; 过拟合</p>
+<p>训练集损失不变 验证集损失下降 ————&gt; 数据集有问题</p>
+<p>训练集损失不变 验证集损失不变 ————&gt; 网络遇到学习瓶颈（减小learning rate或者batch size）</p>
+<p>训练集损失上升 验证集损失上升 ————&gt; 结构设计有误，超参数设置有误，数据经过清洗等。</p>
+<h3 id="_5">♪ 冻结模型</h3>
+<pre><code class="language-python">$ dp freeze -o XXX.pb
+</code></pre>
+<p>在训练的文件夹下，生产一个名为<code>XXX.pb</code>的文件，也就是类似于Tersoff的势函数文件(只是用法类似，内涵完全不同)</p>
+<h3 id="_6">♪ 测试模型</h3>
+<p>是不是训练了一个很好的模型呢？</p>
+<p>测试一下吧</p>
+<pre><code class="language-python">dp test -m XXX.pb -s ../data/ -n 30
+</code></pre>
+<p>旨在将其与每一个数据组进行对比</p>
+<p><img src="https://pic.imgdb.cn/item/625fcb79239250f7c5dc3052.jpg"></p>
+<p><code>-m</code>：测试的模型</p>
+<p><code>-s</code>：数据集所在的路径</p>
+<p><code>-n</code>：测试帧的数量</p>
+<p>可以将更多的参数赋予它，使用</p>
+<pre><code class="language-python">dp test --help
+</code></pre>
+<pre><code class="language-python">usage: dp test [-h] [-v {DEBUG,3,INFO,2,WARNING,1,ERROR,0}] [-l LOG_PATH] [-m MODEL] [-s SYSTEM]
+               [-S SET_PREFIX] [-n NUMB_TEST] [-r RAND_SEED] [--shuffle-test] [-d DETAIL_FILE] [-a]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -v {DEBUG,3,INFO,2,WARNING,1,ERROR,0}, --log-level {DEBUG,3,INFO,2,WARNING,1,ERROR,0}
+                        set verbosity level by string or number, 0=ERROR, 1=WARNING, 2=INFO and
+                        3=DEBUG (default: INFO)
+  -l LOG_PATH, --log-path LOG_PATH
+                        set log file to log messages to disk, if not specified, the logs will only
+                        be output to console (default: None)
+  -m MODEL, --model MODEL
+                        Frozen model file to import (default: frozen_model.pb)
+  -s SYSTEM, --system SYSTEM
+                        The system dir. Recursively detect systems in this directory (default: .)
+  -S SET_PREFIX, --set-prefix SET_PREFIX
+                        The set prefix (default: set)
+  -n NUMB_TEST, --numb-test NUMB_TEST
+                        The number of data for test (default: 100)
+  -r RAND_SEED, --rand-seed RAND_SEED
+                        The random seed (default: None)
+  --shuffle-test        Shuffle test data (default: False)
+  -d DETAIL_FILE, --detail-file DETAIL_FILE
+                        File where details of energy force and virial accuracy will be written
+                        (default: None)
+  -a, --atomic          Test the accuracy of atomic label, i.e. energy / tensor (dipole, polar)
+                        (default: False)
+</code></pre>
+<h3 id="lammpsmd">♪ 最后一步，用LAMMPS运行MD</h3>
+<p>What a easy way（if you sucessfully installed the deepmd_lammps）</p>
+<pre><code class="language-python">pair_style     deepmd XXX.pb
+pair_coeff     * *
+</code></pre>
+<p><img src="https://pic.imgdb.cn/item/625fd011239250f7c5e4d14f.jpg"></p>
+<p>只是比传统的MD多了一些注释的部分，但是这是一条很长的路需要去探索。</p>
+<p><strong>注意！！！！！！</strong></p>
+<p><strong>以水为例，键角、电荷信息已经不再需要</strong></p>
+<p>给出一个示例如下：</p>
+<p><img src="https://pic.imgdb.cn/item/625fce21239250f7c5e17c31.jpg"></p>
+<p>其中O的类型为1，H的类型为2</p>
+<p><img src="https://pic.imgdb.cn/item/625fce3e239250f7c5e1b6a8.jpg"></p>
+<p><strong>That's all！Wish you enjoy your day</strong></p>
+<hr />
 <script type="text/javascript" async
   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
 </script>

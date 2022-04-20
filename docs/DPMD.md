@@ -209,34 +209,219 @@ Fig.3 对比了不同水分子模型的相变点
 ![](https://physics.aps.org/assets/0de59bba-d853-4521-b0dd-59c18b63c6ba/e67_1_medium.png)
 
 
+## ♪ 记录第一次成功运行
+
+祝贺~先鼓掌
+
+Let's start
+
+当然，所有的操作都得在deepmd的环境内执行。`conda activate deepmd`，咱们创建上面已经说的很清楚嘞
+
+### ♪ 数据转换-dpdata
+
+首先，这里有一个**VASP**的数据`OUTCAR`
+
+通过python脚本转换至DeePMD-kit可以使用的数据格式
+
+```python
+import dpdata
+dsys = dpdata.LabeledSystem('OUTCAR')
+dsys.to('deepmd/npy', 'deepmd_data', set_size = dsys.get_nframes())
+```
+
+当然，首先要做的是`pip3 install dpdata`
+
+<img src="https://pic.imgdb.cn/item/625fb556239250f7c5ac9246.jpg">
+
+这时，会得到一个很nice的输入数据文件
+
+<img src="https://pic.imgdb.cn/item/625fb678239250f7c5af25b9.jpg">
 
 
+**这里只创造了一个system，即只有一个模型，如何准备多个模型，见以后的学习吧**
 
+### ♪ 训练模型
 
+以`examples`的示例文件为例
 
+```python
+$ cd $deepmd_source_dir/examples/water/se_e2_a/
+```
 
+**用以下方式进行训练**
 
+```python
+$ dp train input.json
+```
 
+**示例中的运行时间太长了，我特地改小了训练时间**
 
+这炫酷的界面！
+<img src="https://pic.imgdb.cn/item/625fbc18239250f7c5bc16bf.jpg">
 
+最关键的是数据的信息
 
+可以看到，里面有训练集由三个数据系统组成，测试集由一个数据系统组成。
 
+`natoms`：体系原子个数
 
+`bch_sz`：[批次大小](https://blog.csdn.net/program_developer/article/details/78597738)，一次训练选取的样本数，影响模型的优化程度和速度，太小会来不及收敛，一般不低于16。
 
+`n_bch`：批次数目。一个完整数据集分成了多少批次进入神经网络进行训练
 
+`prob`：使用该系统的概率
 
+`pbc`：是否周期性
 
+输出过程：
+<img src="https://pic.imgdb.cn/item/625fc0bb239250f7c5c5a6da.jpg">
 
+部分输出文件示例：（相信你可以看懂）
+<img src="https://pic.imgdb.cn/item/625fc11c239250f7c5c656d6.jpg">
 
+输出数据示例：
+<img src="https://pic.imgdb.cn/item/625fc17e239250f7c5c71bda.jpg">
 
+`rmse_val`：验证损失(validation)。损失：是一个数值，表示对于单个样本而言模型预测的准确程度。预测完全准确，损失为0
 
+`rmse_trn`：训练损失
 
+`rmse_e_val`：能量的均方根 (RMS) 验证误差
 
+`rmse_e_trn`：能量的 RMS 训练误差
 
+`rmse_f_val`：力的 RMS 验证误差
 
+`rmse_f_trn`：RMS 训练误差力
 
+`lr`：学习率:学习率决定了参数移动到最优值的速度快慢。如果学习率过大，很可能会越过最优值；反而如果学习率过小，优化的效率可能过低，长时间算法无法收敛。
 
+均方误差(RMSE)
+<img src="https://pic.imgdb.cn/item/625fc264239250f7c5c8b104.jpg">
 
+可以通过以下代码可视化
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+data = np.genfromtxt("lcurve.out", names=True)
+for name in data.dtype.names[1:-1]:
+    plt.plot(data['step'], data[name], label=name)
+plt.legend()
+plt.xlabel('Step')
+plt.ylabel('Loss')
+plt.xscale('symlog')
+plt.yscale('log')
+plt.grid()
+plt.show()
+plt.savefig("./visualize.jpg")
+```
+
+<img src="https://pic.imgdb.cn/item/625fc9dc239250f7c5d8d687.jpg">
+
+训练集损失下降 验证集损失下降 ————> 网络正在学习（理想状态）
+
+训练集损失下降 验证集损失不变 ————> 过拟合
+
+训练集损失不变 验证集损失下降 ————> 数据集有问题
+
+训练集损失不变 验证集损失不变 ————> 网络遇到学习瓶颈（减小learning rate或者batch size）
+
+训练集损失上升 验证集损失上升 ————> 结构设计有误，超参数设置有误，数据经过清洗等。
+
+### ♪ 冻结模型
+
+```python
+$ dp freeze -o XXX.pb
+```
+
+在训练的文件夹下，生产一个名为`XXX.pb`的文件，也就是类似于Tersoff的势函数文件(只是用法类似，内涵完全不同)
+
+### ♪ 测试模型
+
+是不是训练了一个很好的模型呢？
+
+测试一下吧
+
+```python
+dp test -m XXX.pb -s ../data/ -n 30
+```
+
+旨在将其与每一个数据组进行对比
+
+<img src="https://pic.imgdb.cn/item/625fcb79239250f7c5dc3052.jpg">
+
+`-m`：测试的模型
+
+`-s`：数据集所在的路径
+
+`-n`：测试帧的数量
+
+可以将更多的参数赋予它，使用
+
+```python
+dp test --help
+```
+
+```python
+usage: dp test [-h] [-v {DEBUG,3,INFO,2,WARNING,1,ERROR,0}] [-l LOG_PATH] [-m MODEL] [-s SYSTEM]
+               [-S SET_PREFIX] [-n NUMB_TEST] [-r RAND_SEED] [--shuffle-test] [-d DETAIL_FILE] [-a]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -v {DEBUG,3,INFO,2,WARNING,1,ERROR,0}, --log-level {DEBUG,3,INFO,2,WARNING,1,ERROR,0}
+                        set verbosity level by string or number, 0=ERROR, 1=WARNING, 2=INFO and
+                        3=DEBUG (default: INFO)
+  -l LOG_PATH, --log-path LOG_PATH
+                        set log file to log messages to disk, if not specified, the logs will only
+                        be output to console (default: None)
+  -m MODEL, --model MODEL
+                        Frozen model file to import (default: frozen_model.pb)
+  -s SYSTEM, --system SYSTEM
+                        The system dir. Recursively detect systems in this directory (default: .)
+  -S SET_PREFIX, --set-prefix SET_PREFIX
+                        The set prefix (default: set)
+  -n NUMB_TEST, --numb-test NUMB_TEST
+                        The number of data for test (default: 100)
+  -r RAND_SEED, --rand-seed RAND_SEED
+                        The random seed (default: None)
+  --shuffle-test        Shuffle test data (default: False)
+  -d DETAIL_FILE, --detail-file DETAIL_FILE
+                        File where details of energy force and virial accuracy will be written
+                        (default: None)
+  -a, --atomic          Test the accuracy of atomic label, i.e. energy / tensor (dipole, polar)
+                        (default: False)
+```
+
+### ♪ 最后一步，用LAMMPS运行MD
+
+What a easy way（if you sucessfully installed the deepmd_lammps）
+
+```python
+pair_style     deepmd XXX.pb
+pair_coeff     * *
+```
+
+<img src="https://pic.imgdb.cn/item/625fd011239250f7c5e4d14f.jpg">
+
+只是比传统的MD多了一些注释的部分，但是这是一条很长的路需要去探索。
+
+**注意！！！！！！**
+
+**以水为例，键角、电荷信息已经不再需要**
+
+给出一个示例如下：
+
+<img src="https://pic.imgdb.cn/item/625fce21239250f7c5e17c31.jpg">
+
+其中O的类型为1，H的类型为2
+
+<img src="https://pic.imgdb.cn/item/625fce3e239250f7c5e1b6a8.jpg">
+
+**That's all！Wish you enjoy your day**
+
+---
 
 
 
