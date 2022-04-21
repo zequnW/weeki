@@ -9,4 +9,4 @@
 - 我的GitHub : [zequnW](https://github.com/zequnW)
 - 我的导师——安盟博士 : [学者网](https://www.scholat.com/anmeng0618.cn)；[Scholar](https://scholar.google.com.hk/citations?user=5kHtw6oAAAAJ&hl=zh-CN&oi=sra)
 - 我的师兄——陈东升博士 : [eastsheng's wiki](https://eastsheng.cf/)
-- 我的课题组——NET-group : [NET-group](https://net-sust.github.io/)
+- 我的课题组——NET-Group : [NET-Group](https://net-sust.github.io/)
