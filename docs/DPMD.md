@@ -237,6 +237,12 @@ dsys.to('deepmd/npy', 'deepmd_data', set_size = dsys.get_nframes())
 
 <img src="https://pic.imgdb.cn/item/625fb678239250f7c5af25b9.jpg">
 
+> - 如果OUTCAR保存了1000步分子动力学数据，那就有1000个转换后的数据点
+
+> - `size = 100` 表明1000个数据点被分为了10个数据集，分别为`./data/set.000`~`./data/set.010`
+
+> - 默认最后一个集合为测试集（Of course, the system can be single one, it means that the system act as both training system and validation system. Absolutely, the validation system is meaningless ）
+
 
 **这里只创造了一个system，即只有一个模型，如何准备多个模型，见以后的学习吧**
 
@@ -292,7 +298,7 @@ $ dp train input.json
 
 `rmse_f_val`：力的 RMS 验证误差
 
-`rmse_f_trn`：RMS 训练误差力
+`rmse_f_trn`：RMS 训练误差
 
 `lr`：学习率:学习率决定了参数移动到最优值的速度快慢。如果学习率过大，很可能会越过最优值；反而如果学习率过小，优化的效率可能过低，长时间算法无法收敛。
 
@@ -337,6 +343,12 @@ $ dp freeze -o XXX.pb
 ```
 
 在训练的文件夹下，生产一个名为`XXX.pb`的文件，也就是类似于Tersoff的势函数文件(只是用法类似，内涵完全不同)
+
+部分内容如下：
+<img src="https://pic.imgdb.cn/item/62611a32239250f7c5184b9c.jpg">
+
+> - 某原子的邻居原子中，各个类型的原子的最大数目。比如46就是类型为0，元素为"O"的邻居最多有46个。(dpmd的原子类型排序从0开始)
+
 
 ### ♪ 测试模型
 
@@ -423,10 +435,24 @@ pair_coeff     * *
 
 ---
 
+## ♪ DPMD 对库仑力的讨论
 
+测试证明：.pb 文件自身不带电场
 
+```python
+fix electric all efield 1.5 0.0 0.0	
+ERROR: Fix efield requires atom attribute q or mu
+```
 
+测试证明：无法施加给原子施加电荷
 
+```python
+set group O charge -1.04
+Setting atom values ...
+ERROR: Cannot set this attribute for this atom style (src/set.cpp:198)
+Last command: set group O charge -1.04
+```
+---
 
 <script type="text/javascript" async
   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">

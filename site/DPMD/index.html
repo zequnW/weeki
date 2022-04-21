@@ -89,6 +89,8 @@
     </li>
         </ul>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#dpmd_1">♪ DPMD 对库仑力的讨论</a>
+    </li>
     </ul>
                     </li>
                 </ul>
@@ -298,6 +300,19 @@ dsys.to('deepmd/npy', 'deepmd_data', set_size = dsys.get_nframes())
 <p><img src="https://pic.imgdb.cn/item/625fb556239250f7c5ac9246.jpg"></p>
 <p>这时，会得到一个很nice的输入数据文件</p>
 <p><img src="https://pic.imgdb.cn/item/625fb678239250f7c5af25b9.jpg"></p>
+<blockquote>
+<ul>
+<li>
+<p>如果OUTCAR保存了1000步分子动力学数据，那就有1000个转换后的数据点</p>
+</li>
+<li>
+<p><code>size = 100</code> 表明1000个数据点被分为了10个数据集，分别为<code>./data/set.000</code>~<code>./data/set.010</code></p>
+</li>
+<li>
+<p>默认最后一个集合为测试集（Of course, the system can be single one, it means that the system act as both training system and validation system. Absolutely, the validation system is meaningless ）</p>
+</li>
+</ul>
+</blockquote>
 <p><strong>这里只创造了一个system，即只有一个模型，如何准备多个模型，见以后的学习吧</strong></p>
 <h3 id="_4">♪ 训练模型</h3>
 <p>以<code>examples</code>的示例文件为例</p>
@@ -327,7 +342,7 @@ dsys.to('deepmd/npy', 'deepmd_data', set_size = dsys.get_nframes())
 <p><code>rmse_e_val</code>：能量的均方根 (RMS) 验证误差</p>
 <p><code>rmse_e_trn</code>：能量的 RMS 训练误差</p>
 <p><code>rmse_f_val</code>：力的 RMS 验证误差</p>
-<p><code>rmse_f_trn</code>：RMS 训练误差力</p>
+<p><code>rmse_f_trn</code>：RMS 训练误差</p>
 <p><code>lr</code>：学习率:学习率决定了参数移动到最优值的速度快慢。如果学习率过大，很可能会越过最优值；反而如果学习率过小，优化的效率可能过低，长时间算法无法收敛。</p>
 <p>均方误差(RMSE)
 <img src="https://pic.imgdb.cn/item/625fc264239250f7c5c8b104.jpg"></p>
@@ -357,6 +372,13 @@ plt.savefig(&quot;./visualize.jpg&quot;)
 <pre><code class="language-python">$ dp freeze -o XXX.pb
 </code></pre>
 <p>在训练的文件夹下，生产一个名为<code>XXX.pb</code>的文件，也就是类似于Tersoff的势函数文件(只是用法类似，内涵完全不同)</p>
+<p>部分内容如下：
+<img src="https://pic.imgdb.cn/item/62611a32239250f7c5184b9c.jpg"></p>
+<blockquote>
+<ul>
+<li>某原子的邻居原子中，各个类型的原子的最大数目。比如46就是类型为0，元素为"O"的邻居最多有46个。(dpmd的原子类型排序从0开始)</li>
+</ul>
+</blockquote>
 <h3 id="_6">♪ 测试模型</h3>
 <p>是不是训练了一个很好的模型呢？</p>
 <p>测试一下吧</p>
@@ -412,6 +434,18 @@ pair_coeff     * *
 <p>其中O的类型为1，H的类型为2</p>
 <p><img src="https://pic.imgdb.cn/item/625fce3e239250f7c5e1b6a8.jpg"></p>
 <p><strong>That's all！Wish you enjoy your day</strong></p>
+<hr />
+<h2 id="dpmd_1">♪ DPMD 对库仑力的讨论</h2>
+<p>测试证明：.pb 文件自身不带电场</p>
+<pre><code class="language-python">fix electric all efield 1.5 0.0 0.0 
+ERROR: Fix efield requires atom attribute q or mu
+</code></pre>
+<p>测试证明：无法施加给原子施加电荷</p>
+<pre><code class="language-python">set group O charge -1.04
+Setting atom values ...
+ERROR: Cannot set this attribute for this atom style (src/set.cpp:198)
+Last command: set group O charge -1.04
+</code></pre>
 <hr />
 <script type="text/javascript" async
   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
