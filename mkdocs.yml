@@ -1,5 +1,4 @@
 site_name: Zequn's Wiki Site
-site_url: "http://<zequn.cf>:<port>/<project>"
 
 nav:
   - 主页: index.md

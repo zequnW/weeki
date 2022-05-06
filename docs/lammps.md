@@ -126,6 +126,60 @@ $$
 
 ---
 
+##♪ MS里建一个球体
+
+> - 首先，你需要一个盒子（尺寸可以小于半径，保证是单体就OK）
+
+> - Build -> Build nanostructure -> Nanocluster -> Sphere 输入半径就OK
+
+![](https://pic.imgdb.cn/item/62748fcd0947543129a54883.jpg)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <script type="text/javascript" async
   src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
 </script>
