@@ -135,8 +135,44 @@ $$
 ![](https://pic.imgdb.cn/item/62748fcd0947543129a54883.jpg)
 
 
+##♪ 复杂混合体系中，存在大量单双建的建模问题
 
+存在的问题：
 
+①	MS直接使用AC模块，部分会错误成键。且，AC模块无法控制核数，导致过程太慢！
+
+②	packmol，只可以识别一级键，无法识别二级建。
+
+③	packmol建模后，使用MS的Calculated bond重新识别键，会存在错误成键，乱成键的问题
+解决办法：
+
+依然使用packmol建模，只不过，导入MS后，不要全部计算键，只更改键的类型
+
+-> Calculate Bond type
+![](https://pic.imgdb.cn/item/6282037e0947543129831919.jpg)
+
+解决了键的类型，这样一来，建模再无大问题
+
+##♪ 将LAMMPS跑出的结构，重新导入MS中建模
+
+不讲这一问题的重要意义了，直接上干货：
+
+```python
+dump xx all custom Nfreq dump.lammpstrj id mol type element x y z ix iy iz
+dump_modify element A B C D
+```
+
+已知需要输出的步数，输出这一步数的结构信息（①修改type 的123为具体元素，或②dump_modify 加入元素识别信息）
+
+删除Timestep 0步的结构，之后导入VMD
+
+![](https://pic.imgdb.cn/item/628205e1094754312989c752.jpg)
+
+![](https://pic.imgdb.cn/item/6282060109475431298a2918.jpg)
+
+这样，就可以保存好pdb结构，导入MS后，重新添加原子建模
+
+---
 
 
 
