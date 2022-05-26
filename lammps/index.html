@@ -73,6 +73,8 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#lammpsms">♪ 将LAMMPS跑出的结构，重新导入MS中建模</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#111">♪ 切111切面并改盒子</a>
+    </li>
     </ul>
                     </li>
                 </ul>
@@ -272,6 +274,17 @@ dump_modify element A B C D
 <p><img alt="" src="https://pic.imgdb.cn/item/6282060109475431298a2918.jpg" /></p>
 <p>这样，就可以保存好pdb结构，导入MS后，重新添加原子建模</p>
 <hr />
+<h2 id="111">♪ 切111切面并改盒子</h2>
+<p>选择<code>build &gt; surface &gt; cleave surface</code></p>
+<p><code>Cleave plane 1 1 1</code>    Then <code>Cleave</code></p>
+<p>切后的结构是没有"封顶"的，需要手动设置一个真空层</p>
+<p><code>build &gt; crystal &gt; build vacuum slab</code></p>
+<p><code>vacuum thickness</code>选择0 Å, 就可以得到最小的顶部盖子</p>
+<p><img alt="" src="https://pic.imgdb.cn/item/628edf110947543129834434.jpg" /></p>
+<p>可以看到当前坐标系与晶格并不平行</p>
+<p><code>Lattice Parameters - Advanced - Re-oriented to standard</code></p>
+<p><img alt="" src="https://pic.imgdb.cn/item/628edf47094754312983aa62.jpg" /></p>
+<p>转为正交晶格，然后再参考之前 <code>Redefine lattice</code>,变为方盒子，然后重复上方转正操作即可。</p>
 <script type="text/javascript" async
   src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
 </script>
