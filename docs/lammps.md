@@ -174,6 +174,28 @@ dump_modify element A B C D
 
 ---
 
+##♪ 切111切面并改盒子
+
+选择`build > surface > cleave surface`
+
+`Cleave plane 1 1 1`	Then `Cleave`
+
+切后的结构是没有"封顶"的，需要手动设置一个真空层
+
+`build > crystal > build vacuum slab`
+
+`vacuum thickness`选择0 Å, 就可以得到最小的顶部盖子
+
+![](https://pic.imgdb.cn/item/628edf110947543129834434.jpg)
+
+可以看到当前坐标系与晶格并不平行
+
+`Lattice Parameters - Advanced - Re-oriented to standard`
+
+![](https://pic.imgdb.cn/item/628edf47094754312983aa62.jpg)
+
+转为正交晶格，然后再参考之前 `Redefine lattice`,变为方盒子，然后重复上方转正操作即可。
+
 
 
 
