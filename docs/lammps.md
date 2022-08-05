@@ -196,9 +196,27 @@ dump_modify element A B C D
 
 转为正交晶格，然后再参考之前 `Redefine lattice`,变为方盒子，然后重复上方转正操作即可。
 
+---
 
+##♪ TIP4P水模型
 
+这是TIP4P水模型的始祖文章，[点这里](https://aip.scitation.org/doi/10.1063/1.445869)
 
+![](https://pic.imgdb.cn/item/62ec95338c61dc3b8e71fe90.jpg)
+
+从上图可以看到，体系中水分子即使**存在键角及相关能量参数**，但**对于体系的能量都是没有贡献的**。图中蓝色为加入了除了水分子之外的其他的键
+
+这是由于，TIP4P/TIP3P水模型中，键角能量是不统计进总能量的。从统计水分子自身的能量式可以看到
+
+![](https://pic.imgdb.cn/item/62ec962e8c61dc3b8e75a1a3.jpg)
+
+其中涉及了电荷以及带电原子(氧原子)间的距离。并不涉及键角参数。
+
+也可以看到，并没有设计到原子的能量参数，那么能量参数用在哪呢？当然是用在静电作用了。所以也可以得出另一个结果，如果只统计水分子间作用的话，哪怕不给氧原子的能量参数也是可以的。
+
+Wikipedia also has a nice article on [water models](https://en.wikipedia.org/wiki/Water_model)
+
+---
 
 
 

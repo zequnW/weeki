@@ -75,6 +75,8 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#111">♪ 切111切面并改盒子</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#tip4p">♪ TIP4P水模型</a>
+    </li>
     </ul>
                     </li>
                 </ul>
@@ -285,6 +287,17 @@ dump_modify element A B C D
 <p><code>Lattice Parameters - Advanced - Re-oriented to standard</code></p>
 <p><img alt="" src="https://pic.imgdb.cn/item/628edf47094754312983aa62.jpg" /></p>
 <p>转为正交晶格，然后再参考之前 <code>Redefine lattice</code>,变为方盒子，然后重复上方转正操作即可。</p>
+<hr />
+<h2 id="tip4p">♪ TIP4P水模型</h2>
+<p>这是TIP4P水模型的始祖文章，<a href="https://aip.scitation.org/doi/10.1063/1.445869">点这里</a></p>
+<p><img alt="" src="https://pic.imgdb.cn/item/62ec95338c61dc3b8e71fe90.jpg" /></p>
+<p>从上图可以看到，体系中水分子即使<strong>存在键角及相关能量参数</strong>，但<strong>对于体系的能量都是没有贡献的</strong>。图中蓝色为加入了除了水分子之外的其他的键</p>
+<p>这是由于，TIP4P/TIP3P水模型中，键角能量是不统计进总能量的。从统计水分子自身的能量式可以看到</p>
+<p><img alt="" src="https://pic.imgdb.cn/item/62ec962e8c61dc3b8e75a1a3.jpg" /></p>
+<p>其中涉及了电荷以及带电原子(氧原子)间的距离。并不涉及键角参数。</p>
+<p>也可以看到，并没有设计到原子的能量参数，那么能量参数用在哪呢？当然是用在静电作用了。所以也可以得出另一个结果，如果只统计水分子间作用的话，哪怕不给氧原子的能量参数也是可以的。</p>
+<p>Wikipedia also has a nice article on <a href="https://en.wikipedia.org/wiki/Water_model">water models</a></p>
+<hr />
 <script type="text/javascript" async
   src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
 </script>
