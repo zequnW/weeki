@@ -5,6 +5,7 @@ nav:
   - Lammps: lammps.md
   - DEEPMD-kit: DPMD.md
   - VMD: VMD.md
+  - DFT: DFT.md
   - Linux: Linux.md
   - Python: Python.md
   - Github: Github.md
