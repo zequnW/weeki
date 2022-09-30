@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>一些代码 - Zequn's Wiki Site</title>
+  <title>DFT - Zequn's Wiki Site</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../css/theme.css" />
@@ -18,8 +18,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "\u4e00\u4e9b\u4ee3\u7801";
-    var mkdocs_page_input_path = "Bat.md";
+    var mkdocs_page_name = "DFT";
+    var mkdocs_page_input_path = "DFT.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -62,8 +62,10 @@
                     <li class="toctree-l1"><a class="reference internal" href="../VMD/">VMD</a>
                     </li>
                 </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../DFT/">DFT</a>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">DFT</a>
+    <ul class="current">
+    </ul>
                     </li>
                 </ul>
                 <ul>
@@ -82,20 +84,8 @@
                     <li class="toctree-l1"><a class="reference internal" href="../Mechanism/">Mechanism</a>
                     </li>
                 </ul>
-                <ul class="current">
-                    <li class="toctree-l1 current"><a class="reference internal current" href="./">一些代码</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#markdown">♪ Markdown 语法</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#url">♪ 上传图片获得URL地址</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#_2">♪</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#_3">♪ 写一个公式</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#endnote-x9">♪ Endnote X9 导入文献无法显示期刊名</a>
-    </li>
-    </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../Bat/">一些代码</a>
                     </li>
                 </ul>
                 <ul>
@@ -123,7 +113,7 @@
     
       
     
-    <li>一些代码</li>
+    <li>DFT</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -135,54 +125,49 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="_1">代码</h1>
-<h2 id="markdown">♪ Markdown 语法</h2>
-<blockquote>
-<ul>
-<li>
-<p>转载于: <a href="https://blog.csdn.net/afei__/article/details/80717153">https://blog.csdn.net/afei__/article/details/80717153</a></p>
-<ul>
-<li>删除线的话用<code>&lt;del&gt; &lt;/del&gt;</code></li>
-</ul>
-</li>
-<li>
-<p>更详细的教学： <a href="https://blog.csdn.net/weixin_39653948/article/details/104621249">点这里</a></p>
-</li>
-<li>
-<p>可以在<a href="https://www.zybuluo.com/mdeditor">这里</a>在线预览</p>
-</li>
-</ul>
-</blockquote>
-<hr />
-<h2 id="url">♪ 上传图片获得URL地址</h2>
-<blockquote>
-<ul>
-<li>在<a href="https://www.superbed.cn/">聚合图床</a>上传是个很简单的办法</li>
-</ul>
-</blockquote>
-<hr />
-<h2 id="_2">♪</h2>
-<p><a href="https://jerkwin.github.io/gmxtools/calc/calc.html">一个转换单位的网站</a></p>
-<h2 id="_3">♪ 写一个公式</h2>
-<p>居中的话
-$$
-a^2+a_2+b_{34}=1
+                <h2 id="dft">♪ DFT简介</h2>
+<p><img alt="" src="https://pic1.imgdb.cn/item/63369ad816f2c2beb1695300.jpg" /></p>
+<p><strong>Materials = electrons + nuclei</strong></p>
+<p><strong>Electrostatic attraction + interaction -&gt; Dynamic equilibrium</strong></p>
+<p>一切物质都是由电子和原子核组成，当电子和原子核各自间的<strong>静电引力与相互作用达到动态平衡时</strong>，物质达到稳定</p>
+<p>由于多体薛定谔方程无法求解，我们需要对它进行一系列近似。（简单来说是因为太复杂，怎么复杂后面会补充）</p>
+<p><strong>密度泛函理论 Density Functional Theory</strong></p>
+<p>$$
+Eee = \frac {e^2}{4 π ε_0 d_{ee}}   \tag{电子之间}
 $$</p>
-<p>随便放啦$a^{1}+1/b_{34}=1$</p>
-<p>有点复杂的
-$$ J_\alpha(x) = \sum_{m=0}^\infty \frac{(-1)^m}{m! \Gamma (m + \alpha + 1)} {\left({ \frac{x}{2} }\right)}^{2m + \alpha} \tag{1.1}$$</p>
-<blockquote>
-<ul>
-<li>转载于: <a href="https://www.zybuluo.com/mdeditor">https://www.zybuluo.com/mdeditor</a></li>
-</ul>
-</blockquote>
-<hr />
-<h2 id="endnote-x9">♪ Endnote X9 导入文献无法显示期刊名</h2>
-<p>原因：导入文件出错</p>
-<p><a href="https://pan.baidu.com/s/1TEaGLmKCu3rXwK0g64rWjw">https://pan.baidu.com/s/1TEaGLmKCu3rXwK0g64rWjw</a></p>
-<p>提取码：28ht</p>
-<p>替换之</p>
-<p><img alt="" src="https://img-blog.csdnimg.cn/20200512154302659.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L21hcnNoX3p5,size_16,color_FFFFFF,t_70" /></p>
+<p>$$
+Eee = \frac {Z^2e^2}{4 π ε_0 d_{nn}}    \tag{电子与电子核之间}
+$$</p>
+<p>$$
+Eee = \frac {Ze^2}{4 π ε_0 d_{en}}  \tag{电子核之间}
+$$</p>
+<p>其中：e:电子电量，$ε_0$:真空介电常数(8.86 × 10F/m)，Z:核电荷数。
+分别为电子-电子，电子-原子核，原子核-原子核间的能量，这是基于库伦定律的积分实现的：</p>
+<p>当把库伦常数<strong>k</strong>转化为真空电容率<strong>$1/4πε_0$</strong>后，库伦定律如下：</p>
+<p>$$
+F = \frac {e_1e_2}{4 π ε_0 d_{ee}^2}    \tag{库伦定律}
+$$</p>
+<p>固定一个电子，将另一个电子从平衡位置d处移动到无限远处，对距离d进行积分（字母重复，表示为d’），就可以得到电子与电子间的能量，其余同理</p>
+<p>$$
+\int_{d}^{\infty}{\frac {e^2}{4 π ε_0 d_{ee}}}dd^`<br />
+$$</p>
+<h2 id="binding-energy">♪ Binding energy计算</h2>
+<p>$$
+E_Binding = E_Total - (E_A + E_B)
+$$</p>
+<p>对各部分Energy进行GGA, BLPY求解。同时注意考虑电荷量。</p>
+<h2 id="charge-density">♪ Charge density计算</h2>
+<p><img alt="" src="https://pic1.imgdb.cn/item/6336b93316f2c2beb189f854.png" /></p>
+<p>蓝色区域表示电子缺失，红色区域表示电子富集，白色区域表示稳定。</p>
+<p><img alt="" src="https://pic1.imgdb.cn/item/6336b99d16f2c2beb18a550a.jpg" /></p>
+<p><img alt="" src="https://pic1.imgdb.cn/item/6336b9b016f2c2beb18a65ce.jpg" /></p>
+<p>分析Electron density + Electrostatics + Population analysis.</p>
+<p><img alt="" src="https://pic1.imgdb.cn/item/6336ba7616f2c2beb18b2b23.jpg" /></p>
+<p>色棒可以在Color maps进行调整。</p>
+<h2 id="_1">♪ 势能面计算</h2>
+<p><img alt="" src="https://pic1.imgdb.cn/item/6336bab816f2c2beb18b6e94.jpg" /></p>
+<p><img alt="" src="https://pic1.imgdb.cn/item/6336bb1b16f2c2beb18bd3f5.jpg" /></p>
+<p>在我github中给出了两个<strong><a href="https://github.com/zequnW/Potential-maps.git">例子</a></strong></p>
 <hr />
 <script type="text/javascript" async
   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
@@ -199,10 +184,10 @@ MathJax.Hub.Config({
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../Figures/" class="btn btn-neutral float-right" title="一些想法">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../Linux/" class="btn btn-neutral float-right" title="Linux">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../Mechanism/" class="btn btn-neutral" title="Mechanism"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../VMD/" class="btn btn-neutral" title="VMD"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -228,10 +213,10 @@ MathJax.Hub.Config({
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../Mechanism/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../VMD/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../Figures/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../Linux/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
