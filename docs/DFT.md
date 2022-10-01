@@ -1,16 +1,20 @@
+# Density Functional Theory
+
 ## ♪ DFT简介
 
-![](https://pic1.imgdb.cn/item/63369ad816f2c2beb1695300.jpg)
+<div align=center>
+<img src="https://pic1.imgdb.cn/item/63369ad816f2c2beb1695300.jpg#pic_center" width="50%">
+</div>
 
-**Materials = electrons + nuclei**
+$$**Materials = electrons + nuclei**$$
 
-**Electrostatic attraction + interaction -> Dynamic equilibrium**
+$$**Electrostatic attraction + interaction -> Dynamic equilibrium**$$
 
-一切物质都是由电子和原子核组成，当电子和原子核各自间的**静电引力与相互作用达到动态平衡时**，物质达到稳定
+一切物质都是由电子和原子核组成，当电子和原子核各自间的**静电引力与相互作用达到动态平衡时**，物质达到稳定。
 
-由于多体薛定谔方程无法求解，我们需要对它进行一系列近似。（简单来说是因为太复杂，怎么复杂后面会补充）
+由于多体薛定谔方程无法求解（简单来说是因为太复杂，怎么复杂后面会补充），我们需要对它进行一系列近似。
 
-**密度泛函理论 Density Functional Theory**
+**密度泛函理论 Density Functional Theory**应运而生
 
 $$
 Eee = \frac {e^2}{4 π ε_0 d_{ee}}	\tag{电子之间}
@@ -25,6 +29,7 @@ Eee = \frac {Ze^2}{4 π ε_0 d_{en}}	\tag{电子核之间}
 $$
 
 其中：e:电子电量，$ε_0$:真空介电常数(8.86 × 10F/m)，Z:核电荷数。
+
 分别为电子-电子，电子-原子核，原子核-原子核间的能量，这是基于库伦定律的积分实现的：
 
 当把库伦常数**k**转化为真空电容率**$1/4πε_0$**后，库伦定律如下：
@@ -38,15 +43,15 @@ $$
 $$
 \int_{d}^{\infty}{\frac {e^2}{4 π ε_0 d_{ee}}}dd^`	
 $$
-
+---
 ## ♪ Binding energy计算
 
 $$
-E_Binding = E_Total - (E_A + E_B)
+E_{Binding} = E_Total - (E_A + E_B)
 $$
 
-对各部分Energy进行GGA, BLPY求解。同时注意考虑电荷量。
-
+**对各部分Energy进行GGA, BLPY求解。同时注意考虑电荷量。**
+---
 ## ♪ Charge density计算
 
 ![](https://pic1.imgdb.cn/item/6336b93316f2c2beb189f854.png)
@@ -62,7 +67,7 @@ $$
 ![](https://pic1.imgdb.cn/item/6336ba7616f2c2beb18b2b23.jpg)
 
 色棒可以在Color maps进行调整。
-
+---
 ## ♪ 势能面计算
 
 ![](https://pic1.imgdb.cn/item/6336bab816f2c2beb18b6e94.jpg)
@@ -70,7 +75,7 @@ $$
 ![](https://pic1.imgdb.cn/item/6336bb1b16f2c2beb18bd3f5.jpg)
 
 在我github中给出了两个**[例子](https://github.com/zequnW/Potential-maps.git)**
-
+---
 
 
 

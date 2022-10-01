@@ -218,8 +218,87 @@ Wikipedia also has a nice article on [water models](https://en.wikipedia.org/wik
 
 ---
 
+##♪ 为什么需要Voronoi体积？
+
+应力，是固体力学乃至连续介质力学无法绕开的议题，整个固体力学在讨论本构关系的时候，其中一极就是应力。在lammps中是不存在这样的应力概念的，因为lammps中的界面是离散的。但是在计算材料科学中，我们往往会用lammps计算一种新的材料的模量或者强度，那么如何将lammps中的“应力”转化为宏观固体力学意义上的应力呢。
 
 
+阅读lammps mannual中关于compute stress/atom command中提到，关于lammps中应力的量纲，提到
+
+![](https://pic1.imgdb.cn/item/6337bb3c16f2c2beb16e4a2f.jpg)
+
+意思是说，**lammps的应力单位是“体积×压强”**，这是一个能量项，**但绝不是eV**
+
+以Metal单位举例：
+距离的单位为Å，那么体积单位为$Å^3$，压强的单位为bars，也就是100KPa，
+
+把这些转化为国际单位就是
+$$bars*(A^3)=10^5*(N/m^2)*(10^{-10})^3*(m^3) = 10^{-25}(N*m)$$，
+
+这就是lammps中应力的单位，而并非是
+$$ 1ev=1.6*10^{-19}J=1.6*10^{-19}N*m $$
+
+既然lammps应力的单位表现出能量的含义，那么转化为宏观意义上的应力则需要除以一个体积，那么这个体积该如何得到呢?
+
+**这是没有定论的！**
+
+lammps手册也提到（红色标记）：这很难定义出来。
+
+我认为，有以下三种计算体积的办法：
+
+1 采用compute voronoi/atom命令（下文会将如何安装Voronoi包）
+
+2 自己计算每个原子的体积，乘以总数。然后统计组内原子的应力，除以原子个数和单个体积。
+
+```python
+compute			perCstress cnt stress/atom NULL
+compute			szzx cntstresszz reduce sum c_perCstress[1]
+variable 		szzxbar equal c_szzx/(8.784*count(cntstresszz))*(10^-4)
+```
+其中8.784是单个碳原子的体积 (1)，单位为$Å^3$,这个脚本计算了一个group cntstresszz在x方向的平均应力
+
+3 还有一种方法文献(2)，就是采用连续假设，统计出所有应力和，然后除以整个结构的应力张量的截面的面积。比如把纳米线抽象成一个圆柱，求圆柱的体积。这样的连续假设也常见于计算石墨烯或碳纳米管的应力，往往假设石墨烯或碳纳米管厚度为0.35nm，正好是石墨烯的堆叠平衡距离。
+
+(1)Lee, J. G. (2016). Computational materials science: an introduction, Crc Press.
+
+(2)Roman, R. E., et al. (2015). "Mechanical properties and defect sensitivity of diamond nanothreads." Nano Lett 15(3): 1585-1590.
+
+---
+
+##♪ 安装Voronoi包
+
+1.首先[下载voro++包](https://math.lbl.gov/voro++/download/)
+
+2.在lammps/lib/voronoi的文件夹下，解压voro++-0.4.6
+
+命令：`tar -xvf voro++-0.4.6`
+
+3.解压结束后，打开voro++-0.4.6，输入命令:`make`
+
+4.make结束后，直接输入命令：`sudo make install`
+
+5.创造链接：输入命令：`ln -s voro++-0.4.6/src includelink`
+
+					  `ln -s voro++-0.4.6/src liblink`
+					  
+6.编译lib/voronoi文件下的Makefile.lammps,将Makefile.lammps改成如下格式
+
+```python
+voronoi_SYSINC = -I/usr/local/include/voro++
+voronoi_SYSLIB = -lvoro++
+voronoi_SYSPATH = -L/usr/local/lib
+```
+
+7.进入到lammps/src文件夹下，
+
+make yes-voronoi
+
+make mpi		  
+
+**超算由于没有权限，无法sudo。 what a pity
+
+
+---
 
 
 

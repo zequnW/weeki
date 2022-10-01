@@ -77,6 +77,10 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#tip4p">♪ TIP4P水模型</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#voronoi">♪ 为什么需要Voronoi体积？</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#voronoi_1">♪ 安装Voronoi包</a>
+    </li>
     </ul>
                     </li>
                 </ul>
@@ -301,6 +305,51 @@ dump_modify element A B C D
 <p>其中涉及了电荷以及带电原子(氧原子)间的距离。并不涉及键角参数。</p>
 <p>也可以看到，并没有设计到原子的能量参数，那么能量参数用在哪呢？当然是用在静电作用了。所以也可以得出另一个结果，如果只统计水分子间作用的话，哪怕不给氧原子的能量参数也是可以的。</p>
 <p>Wikipedia also has a nice article on <a href="https://en.wikipedia.org/wiki/Water_model">water models</a></p>
+<hr />
+<h2 id="voronoi">♪ 为什么需要Voronoi体积？</h2>
+<p>应力，是固体力学乃至连续介质力学无法绕开的议题，整个固体力学在讨论本构关系的时候，其中一极就是应力。在lammps中是不存在这样的应力概念的，因为lammps中的界面是离散的。但是在计算材料科学中，我们往往会用lammps计算一种新的材料的模量或者强度，那么如何将lammps中的“应力”转化为宏观固体力学意义上的应力呢。</p>
+<p>阅读lammps mannual中关于compute stress/atom command中提到，关于lammps中应力的量纲，提到</p>
+<p><img alt="" src="https://pic1.imgdb.cn/item/6337bb3c16f2c2beb16e4a2f.jpg" /></p>
+<p>意思是说，<strong>lammps的应力单位是“体积×压强”</strong>，这是一个能量项，<strong>但绝不是eV</strong></p>
+<p>以Metal单位举例：
+距离的单位为Å，那么体积单位为$Å^3$，压强的单位为bars，也就是100KPa，</p>
+<p>把这些转化为国际单位就是
+$$bars<em>(A^3)=10^5</em>(N/m^2)<em>(10^{-10})^3</em>(m^3) = 10^{-25}(N*m)$$，</p>
+<p>这就是lammps中应力的单位，而并非是
+$$ 1ev=1.6<em>10^{-19}J=1.6</em>10^{-19}N*m $$</p>
+<p>既然lammps应力的单位表现出能量的含义，那么转化为宏观意义上的应力则需要除以一个体积，那么这个体积该如何得到呢?</p>
+<p><strong>这是没有定论的！</strong></p>
+<p>lammps手册也提到（红色标记）：这很难定义出来。</p>
+<p>我认为，有以下三种计算体积的办法：</p>
+<p>1 采用compute voronoi/atom命令（下文会将如何安装Voronoi包）</p>
+<p>2 自己计算每个原子的体积，乘以总数。然后统计组内原子的应力，除以原子个数和单个体积。</p>
+<pre><code class="language-python">compute         perCstress cnt stress/atom NULL
+compute         szzx cntstresszz reduce sum c_perCstress[1]
+variable        szzxbar equal c_szzx/(8.784*count(cntstresszz))*(10^-4)
+</code></pre>
+<p>其中8.784是单个碳原子的体积 (1)，单位为$Å^3$,这个脚本计算了一个group cntstresszz在x方向的平均应力</p>
+<p>3 还有一种方法文献(2)，就是采用连续假设，统计出所有应力和，然后除以整个结构的应力张量的截面的面积。比如把纳米线抽象成一个圆柱，求圆柱的体积。这样的连续假设也常见于计算石墨烯或碳纳米管的应力，往往假设石墨烯或碳纳米管厚度为0.35nm，正好是石墨烯的堆叠平衡距离。</p>
+<p>(1)Lee, J. G. (2016). Computational materials science: an introduction, Crc Press.</p>
+<p>(2)Roman, R. E., et al. (2015). "Mechanical properties and defect sensitivity of diamond nanothreads." Nano Lett 15(3): 1585-1590.</p>
+<hr />
+<h2 id="voronoi_1">♪ 安装Voronoi包</h2>
+<p>1.首先<a href="https://math.lbl.gov/voro++/download/">下载voro++包</a></p>
+<p>2.在lammps/lib/voronoi的文件夹下，解压voro++-0.4.6</p>
+<p>命令：<code>tar -xvf voro++-0.4.6</code></p>
+<p>3.解压结束后，打开voro++-0.4.6，输入命令:<code>make</code></p>
+<p>4.make结束后，直接输入命令：<code>sudo make install</code></p>
+<p>5.创造链接：输入命令：<code>ln -s voro++-0.4.6/src includelink</code></p>
+<pre><code>                  `ln -s voro++-0.4.6/src liblink`
+</code></pre>
+<p>6.编译lib/voronoi文件下的Makefile.lammps,将Makefile.lammps改成如下格式</p>
+<pre><code class="language-python">voronoi_SYSINC = -I/usr/local/include/voro++
+voronoi_SYSLIB = -lvoro++
+voronoi_SYSPATH = -L/usr/local/lib
+</code></pre>
+<p>7.进入到lammps/src文件夹下，</p>
+<p>make yes-voronoi</p>
+<p>make mpi          </p>
+<p>**超算由于没有权限，无法sudo。 what a pity</p>
 <hr />
 <script type="text/javascript" async
   src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
