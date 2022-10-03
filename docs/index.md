@@ -1,6 +1,6 @@
 # Welcome to My Wiki~
 
-一个不想得抑郁症的追梦的阳光男孩
+一个的追梦的男孩
 
 <img src="https://pic.imgdb.cn/item/625fd81f239250f7c5f49187.jpg">
 ---
