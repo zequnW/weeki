@@ -233,9 +233,11 @@ Wikipedia also has a nice article on [water models](https://en.wikipedia.org/wik
 距离的单位为Å，那么体积单位为$Å^3$，压强的单位为bars，也就是100KPa，
 
 把这些转化为国际单位就是
+
 $$bars*(A^3)=10^5*(N/m^2)*(10^{-10})^3*(m^3) = 10^{-25}(N*m)$$，
 
 这就是lammps中应力的单位，而并非是
+
 $$ 1ev=1.6*10^{-19}J=1.6*10^{-19}N*m $$
 
 既然lammps应力的单位表现出能量的含义，那么转化为宏观意义上的应力则需要除以一个体积，那么这个体积该如何得到呢?
@@ -299,6 +301,89 @@ make mpi
 
 
 ---
+
+##♪ 计算投射系数
+
+声子态密度表征了声子的本征特征，表明了可以在哪些频率进行传输，而传输能力则取决于界面左右两侧声子的透射系数。透射系数越强，传输能力越强。
+
+感谢梁挺博士的贡献，根据他的工作，我在我的Github上给出了一个[算例](https://github.com/zequnW/Transmission-coefficient)。
+
+引用本代码的话，以下是一些相关工作：
+
+(1) K. Sääskilahti, J. Oksanen, J. Tulkki, and S. Volz, Phys. Rev. B 90, 134312 (2014)
+(2) K. Sääskilahti, J. Oksanen, S. Volz, and J. Tulkki, Phys. Rev. B 91, 115426 (2015)
+(3) Xu K, Deng S, Liang T, et al, Efficient mechanical modulation of the phonon thermal conductivity of Mo6S6 nanowires. Nanoscale, 2022
+(4) An M, Chen D, Ma W, et al. Directly visualizing the crossover from incoherent to coherent phonons in two-dimensional periodic MoS2/MoSe2 arrayed heterostructure. International Journal of Heat and Mass Transfer, 2021
+
+1 首先，编译**Scripts**compactify_vels.cpp文件，并将生成的compactify_vels添加到命令路径中。
+
+```python
+g++  compactify_vels.cpp  -o  compactify_vels
+```
+
+2 跑lammps文件**l2%_relax_thermal.in**，以期得到界面左右两侧原子的速度文件
+
+**本例研究了压缩的BC3，首先进行了压缩**
+
+
+3 转换速度文件vel.dat为透射系数计算所需的文件
+
+```python
+compactify_vels vels.dat
+```
+
+![](https://pic1.imgdb.cn/item/633a58f416f2c2beb1614dcd.jpg)
+
+4 **由于NPT和压缩过程，界面左右两边原子会有微小变化，单纯采用距离统计界面左右两端原子，会造成原子数目少量增减情况**
+因此，本例对forces.in做了改进。
+
+![](https://pic1.imgdb.cn/item/633a59db16f2c2beb162d889.jpg)
+
+这样一来，直接输出界面左右两边原子ID，并替换距离定义的group。在接下来的计算中就不会存在报错情况。
+
+5 运行SHC_generate.py 
+
+![](https://pic1.imgdb.cn/item/633a5a2d16f2c2beb1636486.jpg)
+
+
+可以看到，生成了相关图片。为了方便做图，本例将生成的图片分别保存为.txt文件，
+
+光谱热导率(frequencies_and_ITC.txt)
+![](https://pic1.imgdb.cn/item/633a5a7916f2c2beb163e52c.jpg)
+
+透射系数(frequencies_T_W.txt)
+![](https://pic1.imgdb.cn/item/633a5a8916f2c2beb163ff60.jpg)
+
+透射系数积分(frequencies_accumulated_ITC.txt)
+![](https://pic1.imgdb.cn/item/633a5a9c16f2c2beb16422af.jpg)
+
+---
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

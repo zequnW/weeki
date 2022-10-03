@@ -6,9 +6,9 @@
 <img src="https://pic1.imgdb.cn/item/63369ad816f2c2beb1695300.jpg#pic_center" width="50%">
 </div>
 
-$$**Materials = electrons + nuclei**$$
+$$Materials = electrons + nuclei$$
 
-$$**Electrostatic attraction + interaction -> Dynamic equilibrium**$$
+$$Electrostatic attraction + interaction -> Dynamic equilibrium$$
 
 一切物质都是由电子和原子核组成，当电子和原子核各自间的**静电引力与相互作用达到动态平衡时**，物质达到稳定。
 
@@ -75,6 +75,7 @@ $$
 ![](https://pic1.imgdb.cn/item/6336bb1b16f2c2beb18bd3f5.jpg)
 
 在我github中给出了两个**[例子](https://github.com/zequnW/Potential-maps.git)**
+
 ---
 
 

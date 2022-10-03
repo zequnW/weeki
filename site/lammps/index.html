@@ -81,6 +81,8 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#voronoi_1">♪ 安装Voronoi包</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_6">♪ 计算投射系数</a>
+    </li>
     </ul>
                     </li>
                 </ul>
@@ -313,10 +315,10 @@ dump_modify element A B C D
 <p>意思是说，<strong>lammps的应力单位是“体积×压强”</strong>，这是一个能量项，<strong>但绝不是eV</strong></p>
 <p>以Metal单位举例：
 距离的单位为Å，那么体积单位为$Å^3$，压强的单位为bars，也就是100KPa，</p>
-<p>把这些转化为国际单位就是
-$$bars<em>(A^3)=10^5</em>(N/m^2)<em>(10^{-10})^3</em>(m^3) = 10^{-25}(N*m)$$，</p>
-<p>这就是lammps中应力的单位，而并非是
-$$ 1ev=1.6<em>10^{-19}J=1.6</em>10^{-19}N*m $$</p>
+<p>把这些转化为国际单位就是</p>
+<p>$$bars<em>(A^3)=10^5</em>(N/m^2)<em>(10^{-10})^3</em>(m^3) = 10^{-25}(N*m)$$，</p>
+<p>这就是lammps中应力的单位，而并非是</p>
+<p>$$ 1ev=1.6<em>10^{-19}J=1.6</em>10^{-19}N*m $$</p>
 <p>既然lammps应力的单位表现出能量的含义，那么转化为宏观意义上的应力则需要除以一个体积，那么这个体积该如何得到呢?</p>
 <p><strong>这是没有定论的！</strong></p>
 <p>lammps手册也提到（红色标记）：这很难定义出来。</p>
@@ -350,6 +352,37 @@ voronoi_SYSPATH = -L/usr/local/lib
 <p>make yes-voronoi</p>
 <p>make mpi          </p>
 <p>**超算由于没有权限，无法sudo。 what a pity</p>
+<hr />
+<h2 id="_6">♪ 计算投射系数</h2>
+<p>声子态密度表征了声子的本征特征，表明了可以在哪些频率进行传输，而传输能力则取决于界面左右两侧声子的透射系数。透射系数越强，传输能力越强。</p>
+<p>感谢梁挺博士的贡献，根据他的工作，我在我的Github上给出了一个<a href="https://github.com/zequnW/Transmission-coefficient">算例</a>。</p>
+<p>引用本代码的话，以下是一些相关工作：</p>
+<p>(1) K. Sääskilahti, J. Oksanen, J. Tulkki, and S. Volz, Phys. Rev. B 90, 134312 (2014)
+(2) K. Sääskilahti, J. Oksanen, S. Volz, and J. Tulkki, Phys. Rev. B 91, 115426 (2015)
+(3) Xu K, Deng S, Liang T, et al, Efficient mechanical modulation of the phonon thermal conductivity of Mo6S6 nanowires. Nanoscale, 2022
+(4) An M, Chen D, Ma W, et al. Directly visualizing the crossover from incoherent to coherent phonons in two-dimensional periodic MoS2/MoSe2 arrayed heterostructure. International Journal of Heat and Mass Transfer, 2021</p>
+<p>1 首先，编译<strong>Scripts</strong>compactify_vels.cpp文件，并将生成的compactify_vels添加到命令路径中。</p>
+<pre><code class="language-python">g++  compactify_vels.cpp  -o  compactify_vels
+</code></pre>
+<p>2 跑lammps文件<strong>l2%_relax_thermal.in</strong>，以期得到界面左右两侧原子的速度文件</p>
+<p><strong>本例研究了压缩的BC3，首先进行了压缩</strong></p>
+<p>3 转换速度文件vel.dat为透射系数计算所需的文件</p>
+<pre><code class="language-python">compactify_vels vels.dat
+</code></pre>
+<p><img alt="" src="https://pic1.imgdb.cn/item/633a58f416f2c2beb1614dcd.jpg" /></p>
+<p>4 <strong>由于NPT和压缩过程，界面左右两边原子会有微小变化，单纯采用距离统计界面左右两端原子，会造成原子数目少量增减情况</strong>
+因此，本例对forces.in做了改进。</p>
+<p><img alt="" src="https://pic1.imgdb.cn/item/633a59db16f2c2beb162d889.jpg" /></p>
+<p>这样一来，直接输出界面左右两边原子ID，并替换距离定义的group。在接下来的计算中就不会存在报错情况。</p>
+<p>5 运行SHC_generate.py </p>
+<p><img alt="" src="https://pic1.imgdb.cn/item/633a5a2d16f2c2beb1636486.jpg" /></p>
+<p>可以看到，生成了相关图片。为了方便做图，本例将生成的图片分别保存为.txt文件，</p>
+<p>光谱热导率(frequencies_and_ITC.txt)
+<img alt="" src="https://pic1.imgdb.cn/item/633a5a7916f2c2beb163e52c.jpg" /></p>
+<p>透射系数(frequencies_T_W.txt)
+<img alt="" src="https://pic1.imgdb.cn/item/633a5a8916f2c2beb163ff60.jpg" /></p>
+<p>透射系数积分(frequencies_accumulated_ITC.txt)
+<img alt="" src="https://pic1.imgdb.cn/item/633a5a9c16f2c2beb16422af.jpg" /></p>
 <hr />
 <script type="text/javascript" async
   src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
