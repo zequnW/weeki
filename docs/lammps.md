@@ -311,8 +311,11 @@ make mpi
 引用本代码的话，以下是一些相关工作：
 
 (1) K. Sääskilahti, J. Oksanen, J. Tulkki, and S. Volz, Phys. Rev. B 90, 134312 (2014)
+
 (2) K. Sääskilahti, J. Oksanen, S. Volz, and J. Tulkki, Phys. Rev. B 91, 115426 (2015)
+
 (3) Xu K, Deng S, Liang T, et al, Efficient mechanical modulation of the phonon thermal conductivity of Mo6S6 nanowires. Nanoscale, 2022
+
 (4) An M, Chen D, Ma W, et al. Directly visualizing the crossover from incoherent to coherent phonons in two-dimensional periodic MoS2/MoSe2 arrayed heterostructure. International Journal of Heat and Mass Transfer, 2021
 
 1 首先，编译**Scripts**compactify_vels.cpp文件，并将生成的compactify_vels添加到命令路径中。
