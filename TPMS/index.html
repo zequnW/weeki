@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../DPMD/">
+        <link rel="prev" href="../lammps/">
       
       
-        <link rel="next" href="../DFT/">
+        <link rel="next" href="../DPMD/">
       
       
       <link rel="icon" href="https://pic4.zhimg.com/80/v2-ec2f1c2ce798d66d180079bb8bfccecf_720w.jpg">
@@ -20,7 +20,7 @@
     
     
       
-        <title>VMD - Zequn's Wiki Site</title>
+        <title>TPMS - Zequn's Wiki Site</title>
       
     
     
@@ -72,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#vmd" class="md-skip">
+        <a href="#_1" class="md-skip">
           Skip to content
         </a>
       
@@ -108,7 +108,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              VMD
+              TPMS
             
           </span>
         </div>
@@ -246,9 +246,11 @@
         
   
   
+    
   
-    <li class="md-tabs__item">
-      <a href="../TPMS/" class="md-tabs__link">
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
         
   
     
@@ -280,11 +282,9 @@
         
   
   
-    
   
-  
-    <li class="md-tabs__item md-tabs__item--active">
-      <a href="./" class="md-tabs__link">
+    <li class="md-tabs__item">
+      <a href="../VMD/" class="md-tabs__link">
         
   
     
@@ -483,10 +483,30 @@
       
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../TPMS/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    TPMS
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -495,6 +515,62 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#gyroid-g" class="md-nav__link">
+    <span class="md-ellipsis">
+      Gyroid (G):
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#primitive-p" class="md-nav__link">
+    <span class="md-ellipsis">
+      Primitive (P):
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#diamond-d" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diamond (D):
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#i-wp-w" class="md-nav__link">
+    <span class="md-ellipsis">
+      I-WP (W):
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -523,19 +599,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../VMD/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -544,7 +611,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -684,56 +750,44 @@
                   
 
 
-<h1 id="vmd">VMD</h1>
-<h1 id="_1">♪ 输出高清图片</h1>
-<p>1.Load VMD state of the Molecule.</p>
-<p>2.Go to File -&gt; Render -&gt; Tachyon</p>
-<p>3.Change both occurrences of <del>%s</del>  to "plot" in the render window (<strong>Important!</strong>)</p>
-<p>4.Render once</p>
-<p>5.Edit resolution in XX.bat by using the following bat script:</p>
-<pre><code class="language-python">tachyon_WIN32.exe XXX.dat -aasamples 100 -mediumshade -trans_vmd -res 1024 742 -format BMP -o XXX.png
-    - &quot;XXX.dat&quot; 在render已定义
-    - &quot;100&quot; 抗锯齿，越大像素越高，24 is ok
-    - &quot;1024 742&quot;像素，可以自己改. eg 1024 742 -&gt; 2048 1484 -&gt; 6144 4452
-    - &quot;XXX.png&quot; 输出文件的名字
-</code></pre>
-<p>6.Thermail 中运行XX.dat  (拖动 或者 ./ xx.bat )</p>
-<p>7.你可以收获一张无限清晰的图片，甚至有几百MB</p>
+<h1 id="_1">♪ 常见构型 (公式)</h1>
+<h3 id="gyroid-g"><em>Gyroid (G):</em></h3>
+<p>$$
+sin((2πX)/L)<em>cos((2πY)/L)+sin((2πY)/L)</em>cos((2πZ)/L)+sin((2πZ)/L)*cos((2πX)/L) = 0
+$$</p>
+<h3 id="primitive-p"><em>Primitive (P):</em></h3>
+<p>$$
+cos((2πX)/L)+cos((2πY)/L)+cos((2πZ)/L) = 0
+$$</p>
+<h3 id="diamond-d"><em>Diamond (D):</em></h3>
+<p>$$
+sin((2πX)/L)<em>sin((2πY)/L)</em>sin((2πZ)/L)+sin((2πX)/L)<em>cos((2πY)/L)</em>cos((2πZ)/L)+cos((2πX)/L)<em>sin((2πY)/L)</em>cos((2πZ)/L)+cos((2πX)/L)<em>cos((2πY)/L)</em>sin((2πZ)/L) = 0
+$$</p>
+<h3 id="i-wp-w"><em>I-WP (W):</em></h3>
+<p>$$
+2<em>(cos((2πX)/L)</em>cos((2πY)/L)+cos((2πY)/L)<em>cos((2πZ)/L)+cos((2πZ)/L)</em>cos((2πX)/L)) -((cos(2<em>((2πX)/L))+cos(2</em>((2πY)/L))+cos(2*((2πZ)/L)))) = 0
+$$</p>
+<p>其中G, P, D构型公式见<a href="https://pubs.acs.org/doi/full/10.1021/acsami.2c22241">这里</a>，W型公式见<a href="https://www.sciencedirect.com/science/article/pii/S0196890423003011">这里</a>。</p>
 <hr />
-<h1 id="_2">♪ 统计氢键</h1>
-<p>*** 什么是氢键？ ***</p>
-<p>氢原子与电负性大的原子X以<strong>共价键结合</strong>. 与电负性大、半径小的原子Y(O F N等)接近，在X和Y直接以氢为<strong>媒介</strong>，生成X-H...Y形式的一种特殊的分子间或分子内<strong>相互作用</strong>。 </p>
-<p><strong>如果X和Y一样，这就是水中的氢键O-H...H</strong>。当然，X和Y可以不一样，这就是为什么这么多研究中通过各种基团的组合，制造出了可以产生氢键的结构材料，达到了人们想要的效果</p>
-<p>氢键的判别标准：（以水分子为例，如下图）</p>
-<ul>
-<li>
-<p>两个氧原子之间的距离小于  <strong>$R_{00}&lt;3.5 Å$</strong></p>
-</li>
-<li>
-<p>供体中的OH与受体上的O直接夹角  <strong>$φ&lt;30°$</strong></p>
-</li>
-</ul>
-<p><img alt="" src="https://pic.imgdb.cn/item/622d7ac05baa1a80ab237134.png" /></p>
-<p>我们可以通过编写代码求解(见我的<a href="https://github.com/zequnW/HBonds_calculate/tree/master">Github</a>，感谢党昊同学做出的贡献)</p>
-<p>但是氢键作为随时间变化强烈的一个量，需要对平均多个时刻的氢键才可以得到一个可靠的结果，VMD自带的Analysis功能是一个很好的方法，操作如下：</p>
-<pre><code class="language-python">dump 1 Water custom 1000 $n_dump.lammpstrj id element x y z
-dump_modify 1 element O H
-</code></pre>
-<p>VMD无法识别原子类型，因此无法识别什么是H什么是O，因此<strong>dump_modify是很重要的！</strong></p>
-<ul>
-<li>将轨迹文件导入VMD中，处理方式如下</li>
-</ul>
-<div align=center>
-<img src="https://pic.imgdb.cn/item/6257d6ed239250f7c5d441e3.jpg">
-</div>
-
-<ul>
-<li>你可以得到一个很清晰的结果</li>
-</ul>
-<div align=center>
-<img src="https://pic.imgdb.cn/item/6257d6dd239250f7c5d42481.jpg">
-</div>
-
+<h1 id="ovito">♪ 常见构型 (Ovito版)</h1>
+<h2 id="ni"><strong>以Ni为例：</strong></h2>
+<h3 id="gyroid-g_1"><em>Gyroid (G):</em></h3>
+<p>$$
+sin((2<em>pi</em>Position.X)/35.240)<em>cos((2</em>pi<em>Position.Y)/35.240)+sin((2</em>pi<em>Position.Y)/35.240)</em>cos((2<em>pi</em>Position.Z)/35.240)+sin((2<em>pi</em>Position.Z)/35.240)<em>cos((2</em>pi*Position.X)/35.240) = 0
+$$</p>
+<h3 id="primitive-p_1"><em>Primitive (P):</em></h3>
+<p>$$
+cos((2<em>pi</em>Position.X)/35.240)+cos((2<em>pi</em>Position.Y)/35.240)+cos((2<em>pi</em>Position.Z)/35.240) = 0
+$$</p>
+<h3 id="diamond-d_1"><em>Diamond (D):</em></h3>
+<p>$$
+sin((2<em>pi</em>Position.X)/35.240)<em>sin((2</em>pi<em>Position.Y)/35.240)</em>sin((2<em>pi</em>Position.Z)/35.240)+sin((2<em>pi</em>Position.X)/35.240)<em>cos((2</em>pi<em>Position.Y)/35.240)</em>cos((2<em>pi</em>Position.Z)/35.240)+cos((2<em>pi</em>Position.X)/35.240)<em>sin((2</em>pi<em>Position.Y)/35.240)</em>cos((2<em>pi</em>Position.Z)/35.240)+cos((2<em>pi</em>Position.X)/35.240)<em>cos((2</em>pi<em>Position.Y)/35.240)</em>sin((2<em>pi</em>Position.Z)/35.240) = 0
+$$</p>
+<h3 id="i-wp-w_1"><em>I-WP (W):</em></h3>
+<p>$$
+2<em>(cos((2</em>pi<em>Position.X)/35.240)</em>cos((2<em>pi</em>Position.Y)/35.240)+cos((2<em>pi</em>Position.Y)/35.240)<em>cos((2</em>pi<em>Position.Z)/35.240)+cos((2</em>pi<em>Position.Z)/35.240)</em>cos((2<em>pi</em>Position.X)/35.240)) -((cos(2<em>((2</em>pi<em>Position.X)/35.240))+cos(2</em>((2<em>pi</em>Position.Y)/35.240))+cos(2<em>((2</em>pi*Position.Z)/35.240)))) = 0
+$$</p>
+<hr />
 <script type="text/javascript" async
   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
 </script>
@@ -777,7 +831,7 @@ MathJax.Hub.Config({
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../DPMD/" class="md-footer__link md-footer__link--prev" aria-label="Previous: DEEPMD-kit">
+          <a href="../lammps/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Lammps">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
@@ -787,20 +841,20 @@ MathJax.Hub.Config({
                 Previous
               </span>
               <div class="md-ellipsis">
-                DEEPMD-kit
+                Lammps
               </div>
             </div>
           </a>
         
         
           
-          <a href="../DFT/" class="md-footer__link md-footer__link--next" aria-label="Next: DFT">
+          <a href="../DPMD/" class="md-footer__link md-footer__link--next" aria-label="Next: DEEPMD-kit">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                DFT
+                DEEPMD-kit
               </div>
             </div>
             <div class="md-footer__button md-icon">
