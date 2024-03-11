@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Python - Zequn's Wiki Site</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Python";
+        var mkdocs_page_input_path = "Python.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Zequn's Wiki Site
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">主页</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../lammps/">Lammps</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../DPMD/">DEEPMD-kit</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../VMD/">VMD</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../DFT/">DFT</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Linux/">Linux</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">Python</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#pearsons-correlation-coefficient">♪ Pearson`s correlation coefficient</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#_1">什么是皮尔逊相关系数？</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#python_1">♪ Python配色</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#tetrahedral-angle">♪ Tetrahedral angle</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#_2">什么是四面体角？</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Github/">Github</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Mechanism/">Mechanism</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Bat/">一些代码</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Figures/">一些想法</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Zequn's Wiki Site</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Python</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="python">Python~</h1>
+<h2 id="pearsons-correlation-coefficient">♪ Pearson`s correlation coefficient</h2>
+<h3 id="_1">什么是皮尔逊相关系数？</h3>
+<p>在统计学中，皮尔逊相关系数是用于度量变量直接的相关关系（<strong>线性相关</strong>），定义为两个变量之间的协方差和标准差的商，其值介于-1到1之间</p>
+<p>具体可见以下两篇文章：</p>
+<p><a href="https://onlinelibrary.wiley.com/doi/full/10.1002/cyto.a.20896">(2010，引,747次)Quantifying colocalization by correlation: the Pearson correlation coefficient is superior to the Mander's overlap coefficient</a></p>
+<p><a href="https://www.sciencedirect.com/science/article/pii/S0925231216307925?casa_token=nKf9cXv8vCoAAAAA:HS6wz6P9I3UVxQu2rzAQ1VOmGlxaDFPbqdSua4cxHr6hZlklSAMGpYfinGeTvdm2P-5vXhxin0g">(2016,引用212次，这篇讲的很详细)A new sampling method in particle filter based on Pearson correlation coefficient</a></p>
+<p>这是Pearson correlation coefficient的始祖文章，<a href="https://www.tandfonline.com/doi/abs/10.1080/00031305.1988.10475524">点这里</a></p>
+<p>在我的Github中，我给出了一个可以直接使用的<strong><a href="https://github.com/zequnW/Calculated-Pearson-s-correlation-coefficient">例子</a></strong></p>
+<hr />
+<h2 id="python_1">♪ Python配色</h2>
+<p><a href="https://blog.csdn.net/sadsummerholiday/article/details/105948399">这里</a>有很多好看的配色</p>
+<p><a href="https://blog.csdn.net/sadsummerholiday/article/details/105948399">下面</a>给出了很多漂亮的配色可以使用</p>
+<hr />
+<h2 id="tetrahedral-angle">♪ Tetrahedral angle</h2>
+<h3 id="_2">什么是四面体角？</h3>
+<p><img alt="" src="https://pic.imgdb.cn/item/62ec8e698c61dc3b8e599043.jpg" /></p>
+<p>水分子会和周围的两个水分子通过<strong>氢键</strong>形成一个如图的四面体网络，其中灰色的两点为周围水分子的氢原子。</p>
+<p>在水分子的四面体网络中，四面体角(TA)代表了水分子的排布规律。</p>
+<p>如果TA<strong>均匀分布在0-180°</strong>，即表征了<strong>液态水的无序状态</strong>。如果TA<strong>集中分布在90°</strong>，即表征此时水分子形成了高度有序的<strong>方形冰</strong>的结构。</p>
+<p>在我的<strong><a href="https://github.com/zequnW">Github</a></strong>中，给出了一个可以直接使用的例基于python的<strong><a href="https://github.com/zequnW/Calculat-Tetradehral-Angle">例子</a></strong></p>
+<hr />
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../Linux/" class="btn btn-neutral float-left" title="Linux"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../Github/" class="btn btn-neutral float-right" title="Github">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../Linux/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../Github/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

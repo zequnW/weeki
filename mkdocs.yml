@@ -1,0 +1,18 @@
+site_name: Zequn's Wiki Site
+
+nav:
+  - 主页: index.md
+  - Lammps: lammps.md
+  - DEEPMD-kit: DPMD.md
+  - VMD: VMD.md
+  - DFT: DFT.md
+  - Linux: Linux.md
+  - Python: Python.md
+  - Github: Github.md
+  - Mechanism: Mechanism.md 
+  - 一些代码: Bat.md
+  - 一些想法: Figures.md
+theme:
+  name: readthedocs #'readthedocs'默认
+  navigation_depth: 3
+  favicon: 'https://pic4.zhimg.com/80/v2-ec2f1c2ce798d66d180079bb8bfccecf_720w.jpg'

@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Linux - Zequn's Wiki Site</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Linux";
+        var mkdocs_page_input_path = "Linux.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Zequn's Wiki Site
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">主页</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../lammps/">Lammps</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../DPMD/">DEEPMD-kit</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../VMD/">VMD</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../DFT/">DFT</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">Linux</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#windows-linux">♪ Windows-linux子系统的安装</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#1-linux-windows">步骤1 启用适用于 Linux 的 Windows 子系统</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#2-wsl-2-ok">步骤2 检查运行 WSL 2 的要求 (默认都是OK的)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#3">步骤3 启动虚拟机功能</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#4-linux">步骤4 下载Linux内核更新包</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#5-wsl-2-ok">步骤5 将 WSL 2 设置为默认版本(默认OK)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#6-linux">步骤6 安装所选的 Linux 分发</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#7">步骤7 创建用户帐户和密码</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_1">可以给他一个图形化的界面~</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#windows-linux_1">♪ Windows-linux子系统的搬家</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#1">步骤1 打开子系统得到主目录</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#2-wsl">步骤2 把子系统(WSL)搬到非系统盘</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_2">♪ 查看文件夹大小</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#package">♪ 安装并编译Package</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#_3">无法编译包的一个问题</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_4">♪ 复制文件</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#_5">将复制单个文件</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_6">将一个文件夹复制到另一个文件夹下</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_7">♪ 解压文件</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#anaconda">♪ 安装Anaconda</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Python/">Python</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Github/">Github</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Mechanism/">Mechanism</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Bat/">一些代码</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Figures/">一些想法</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Zequn's Wiki Site</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Linux</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="linux">Linux</h1>
+<h2 id="windows-linux">♪ Windows-linux子系统的安装</h2>
+<h4 id="1-linux-windows">步骤1 启用适用于 Linux 的 Windows 子系统</h4>
+<ul>
+<li>需要先启用“适用于 Linux 的 Windows 子系统”可选功能，然后才能在 Windows 上安装 Linux 分发。</li>
+</ul>
+<p>菜单 -&gt; 设置 -&gt; 键入“windows功能” -&gt; 启动或关闭windows功能 -&gt; 勾选“适用于 Linux 的 Windows 子系统” -&gt; 重启电脑</p>
+<p><img alt="" src="https://img2018.cnblogs.com/blog/1244179/201812/1244179-20181228134938823-1319666346.png" /></p>
+<p><img alt="" src="https://img2018.cnblogs.com/blog/1244179/201812/1244179-20181228135058021-928473670.png" /></p>
+<p><img alt="" src="https://img2018.cnblogs.com/blog/1244179/201812/1244179-20181228135400930-1592101849.png" /></p>
+<p>重启电脑是一个<strong>神奇的选择</strong>，有些机器可以不用，有些需要这一步。</p>
+<ul>
+<li>以管理员身份打开 PowerShell（“开始”菜单 &gt;“PowerShell”&gt; 单击右键 &gt;“以管理员身份运行”），然后输入以下命令：</li>
+</ul>
+<pre><code class="language-python">dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
+</code></pre>
+<p><strong>在搜索框中直接搜索是最方便的方式</strong>。前提是你需要将它固定在任务栏</p>
+<h4 id="2-wsl-2-ok">步骤2 检查运行 WSL 2 的要求 (默认都是OK的)</h4>
+<ul>
+<li>若要检查 Windows 版本及内部版本号，选择 Windows 徽标键 + R，然后键入“winver”，选择“确定”。 更新到“设置”菜单中的最新 Windows 版本。</li>
+</ul>
+<h4 id="3">步骤3 启动虚拟机功能</h4>
+<ul>
+<li>
+<p>安装 WSL 2 之前，必须启用“虚拟机平台”可选功能。 计算机需要虚拟化功能才能使用此功能。(默认OK)</p>
+</li>
+<li>
+<p>以管理员身份打开 PowerShell 并运行：</p>
+</li>
+</ul>
+<pre><code class="language-python">dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
+</code></pre>
+<h4 id="4-linux">步骤4 下载Linux内核更新包</h4>
+<ul>
+<li>
+<p>下载最新包。<a href="https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi">适用于 x64 计算机的 WSL2 Linux 内核更新包</a></p>
+</li>
+<li>
+<p><strong>运行</strong>上一步中下载的更新包。（双击以运行 - 系统将提示你提供提升的权限，选择“是”以批准此安装。）</p>
+</li>
+</ul>
+<h4 id="5-wsl-2-ok">步骤5 将 WSL 2 设置为默认版本(默认OK)</h4>
+<pre><code class="language-python">wsl --set-default-version 2
+</code></pre>
+<h4 id="6-linux">步骤6 安装所选的 Linux 分发</h4>
+<ul>
+<li>
+<p>打开 <a href="https://aka.ms/wslstore">Microsoft Store</a>，并选择你偏好的 Linux 分发版。</p>
+</li>
+<li>
+<p><a href="https://www.microsoft.com/en-us/p/ubuntu-2004-lts/9n6svws3rx71?rtc=1#activetab=pivot:overviewtab">20.04</a> 版本的Ubuntu是一个很稳定的版本。</p>
+</li>
+<li>
+<p>安装即可。如果无法打开Microsoft Store，可能你需要关掉VPN。
+<img alt="" src="https://img2018.cnblogs.com/blog/1244179/201812/1244179-20181228140138967-281402613.png" /></p>
+</li>
+</ul>
+<h4 id="7">步骤7 创建用户帐户和密码</h4>
+<p><img alt="" src="https://img2018.cnblogs.com/blog/1244179/201812/1244179-20181228140309955-1004055466.png" />
+- Whatever you like</p>
+<pre><code>- 此用户名和密码特定于安装的每个单独的 Linux 分发版，与 Windows 用户名无关。
+
+- 创建用户名和密码后，该帐户将是分发版的默认用户，并将在启动时自动登录。
+
+- 此帐户将被视为 Linux 管理员，能够运行 sudo (Super User Do) 管理命令。
+
+- 在 WSL 上运行的每个 Linux 发行版都有其自己的 Linux 用户帐户和密码。 每当添加分发版、重新安装或重置时，都必须配置一个 Linux 用户帐户。
+</code></pre>
+<ul>
+<li>适于Linux的Windows子系统安装后会保存在C:\Users\Administrator\AppData\Local\Packages\
+CanonicalGroupLimited.UbuntuonWindows_79rhkp1fndgsc（文件夹大小近600M）</li>
+</ul>
+<h4 id="_1">可以给他一个图形化的界面~</h4>
+<p>还是在 Microsoft Store里，搜索Windows Terminal
+<img alt="" src="https://img-blog.csdnimg.cn/20200621172631340.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTQ3OTIzMDE=,size_16,color_FFFFFF,t_70" /></p>
+<p><strong><em>OK. Now, enjoy it</em></strong></p>
+<hr />
+<h2 id="windows-linux_1">♪ Windows-linux子系统的搬家</h2>
+<p>安装在C盘当然不是最理想的位置，因此我们需要给他搬个家</p>
+<h4 id="1">步骤1 打开子系统得到主目录</h4>
+<pre><code class="language-python">explorer.exe .
+</code></pre>
+<h4 id="2-wsl">步骤2 把子系统(WSL)搬到非系统盘</h4>
+<ul>
+<li>下载并解压<a href="https://github.com/DDoSolitary/LxRunOffline/releases/tag/v3.5.0">LxRunOffline-v3.5.0-msvc.zip</a>.感谢这位同学写的Github程序</li>
+<li>查看安装的子系统</li>
+</ul>
+<pre><code class="language-python">LxRunOffline.exe list
+</code></pre>
+<ul>
+<li>子系统迁移</li>
+</ul>
+<pre><code class="language-python">LxRunOffline.exe move -n Ubuntu-20.04 -d D:\Ubuntu
+</code></pre>
+<hr />
+<h2 id="_2">♪ 查看文件夹大小</h2>
+<ul>
+<li>查询整个文件夹的大小</li>
+</ul>
+<pre><code class="language-python">du -sh *
+</code></pre>
+<ul>
+<li>查询单个文件夹的大小</li>
+</ul>
+<pre><code class="language-python">du -sh ./filename
+</code></pre>
+<hr />
+<h2 id="package">♪ 安装并编译Package</h2>
+<ul>
+<li>进入Lammps安装的文件夹内</li>
+</ul>
+<pre><code class="language-python">cd Work1/anmeng_work/lammps-3Mar20/src
+</code></pre>
+<ul>
+<li>查看扩展安装包状态</li>
+</ul>
+<pre><code class="language-python">make ps
+或 make package-status
+</code></pre>
+<ul>
+<li>安装需要的包</li>
+</ul>
+<pre><code class="language-python">make yes-Packages_name
+</code></pre>
+<ul>
+<li>编译运行</li>
+</ul>
+<pre><code class="language-python">make mpi
+</code></pre>
+<p>04.12</p>
+<h3 id="_3">无法编译包的一个问题</h3>
+<p><code>x86_64-conda_cos6-linux-gnu-c++ command not found</code></p>
+<pre><code class="language-python">conda install gxx_linux-64
+</code></pre>
+<p>provide it, and it works.</p>
+<hr />
+<h2 id="_4">♪ 复制文件</h2>
+<h3 id="_5">将复制单个文件</h3>
+<pre><code class="language-python">cp A /home/packageB #把当前文件夹下的A复制到B(目标)下面去
+</code></pre>
+<h3 id="_6">将一个文件夹复制到另一个文件夹下</h3>
+<pre><code class="language-python">cp -r /home/packageA /home/packageB #把A复制到B(目标)下面去
+</code></pre>
+<h2 id="_7">♪ 解压文件</h2>
+<pre><code class="language-python">tar -zcvf A.tar.gz      #压缩一个名为A的文件
+tar -zxvf A.tar.gz      #解压名为A的文件
+tar -vxf  A.tar.gz      #解压名为A的文件，上面的报错的情况下。
+</code></pre>
+<h2 id="anaconda">♪ 安装Anaconda</h2>
+<p>首先，在官网<a href="https://www.anaconda.com/products/distribution#Downloads">下载Anaconda安装包</a></p>
+<p><img alt="" src="https://pic.imgdb.cn/item/62470d4127f86abb2a2fb155.png" /></p>
+<p>一直回车到这一步↓（安装位置，回车则默认）</p>
+<p><img alt="" src="https://pic.imgdb.cn/item/62470e1a27f86abb2a31c26a.png" /></p>
+<p>然后到这一步。决定是否开启一键配置环境</p>
+<p><strong>这是对于小白来说很快捷的一步（这一步如果长时间不操作的话会默认no，需要及时确认）</strong></p>
+<p><img alt="" src="https://pic.imgdb.cn/item/62470e5027f86abb2a323e38.png" /></p>
+<pre><code class="language-python">source ~/.bashrc    #开启conda base模式
+source deactivate   #结束base模式
+</code></pre>
+<p><img alt="" src="https://pic.imgdb.cn/item/6247104927f86abb2a369d27.png" /></p>
+<hr />
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../DFT/" class="btn btn-neutral float-left" title="DFT"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../Python/" class="btn btn-neutral float-right" title="Python">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../DFT/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../Python/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

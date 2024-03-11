@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>DEEPMD-kit - Zequn's Wiki Site</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "DEEPMD-kit";
+        var mkdocs_page_input_path = "DPMD.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Zequn's Wiki Site
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">主页</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../lammps/">Lammps</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">DEEPMD-kit</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#dpmd">♪ DPMD简介</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#install-dpdata">♪ Install dpdata (数据转换)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#install-deepmd-kit">♪ Install DeepMD-Kit (数据转换)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#install-dp-gen">♪ Install DP-Gen (数据转换)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#install-lammps-with-deepmd">♪ Install LAMMPS With deepmd (终于成功了！！！)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_2">♪ 安装过程中的问题合集</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#lifeng-zhang-2021prl">♪ Lifeng Zhang 教授的2021年一篇PRL</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#lifeng-zhang-prl">♪ Lifeng Zhang 教授PRL下面推荐的一篇类似的文章</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_3">♪ 记录第一次成功运行</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#-dpdata">♪ 数据转换-dpdata</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_4">♪ 训练模型</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_5">♪ 冻结模型</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_6">♪ 测试模型</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#lammpsmd">♪ 最后一步，用LAMMPS运行MD</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#dpmd_1">♪ DPMD 对库仑力的讨论</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../VMD/">VMD</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../DFT/">DFT</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Linux/">Linux</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Python/">Python</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Github/">Github</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Mechanism/">Mechanism</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Bat/">一些代码</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Figures/">一些想法</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Zequn's Wiki Site</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">DEEPMD-kit</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="_1">站在巨人的肩膀上</h1>
+<h2 id="dpmd">♪ DPMD简介</h2>
+<p>可以在这里看<a href="https://docs.deepmodeling.org/projects/deepmd/en/master/getting-started/index.html">电子版的手册</a>(网站和我一样也是Mkdocs写的哈哈哈)</p>
+<p>30/3/2022</p>
+<p>简单来说，就是在一个小体系里面，用<strong>深度学习</strong>训练小体系里面原子的相互作用，然后推广到大体系里面去</p>
+<p>训练会得到一个封装好的,冻结住的<strong>.dp</strong>文件，然后像<strong>Tersoff</strong>一样<strong>替换</strong>LAMMPS文件中的pair_style 和 pair_coeff，像这样</p>
+<pre><code class="language-python">pair_style     deepmd graph.pb
+pair_coeff     * *
+</code></pre>
+<p><img alt="" src="https://pic.imgdb.cn/item/6247ab5627f86abb2af11454.png" /></p>
+<p>12/4/2022</p>
+<p>用VASP/CP2K导出模型，然后用dpdata转换至dp可识别的数据</p>
+<p>待续...</p>
+<hr />
+<h3 id="install-dpdata">♪ Install dpdata (数据转换)</h3>
+<pre><code class="language-python">pip3 install dpdata
+</code></pre>
+<p><img alt="" src="https://pic.imgdb.cn/item/6247ac3327f86abb2af2678e.png" /></p>
+<p>安装结束后，进入python环境，输入import dapta,不产生结果，正确。</p>
+<p><img alt="" src="https://pic.imgdb.cn/item/6247ac4f27f86abb2af28c10.png" /></p>
+<hr />
+<h3 id="install-deepmd-kit">♪ Install DeepMD-Kit (数据转换)</h3>
+<p>有这三种安装方式，推荐conda</p>
+<p><img alt="" src="https://pic.imgdb.cn/item/6247adfc27f86abb2af508ac.png" /></p>
+<pre><code class="language-python">conda create -n deepmd deepmd-kit=*=*cpu libdeepmd=*=*cpu lammps-dp -c https://conda.deepmodeling.org
+</code></pre>
+<p><img alt="" src="https://pic.imgdb.cn/item/6247ae5827f86abb2af59a50.png" /></p>
+<pre><code class="language-python">dp -h   #相关信息
+dp --version    #安装版本
+</code></pre>
+<p><img alt="" src="https://pic.imgdb.cn/item/6247ae5827f86abb2af59a50.png" /></p>
+<hr />
+<h3 id="install-dp-gen">♪ Install DP-Gen (数据转换)</h3>
+<p>依然是三种安装方式，推荐git。</p>
+<p>(pip安装目前只可以安0.10.0,最新的0.10.3未上传，截止22.03.03. 0.10.3性能有大提升，大家如是说)</p>
+<p><img alt="" src="https://pic.imgdb.cn/item/6247af3e27f86abb2af74570.png" /></p>
+<p>四步走：(#github→gitee,一个国内github的镜像网站)</p>
+<pre><code class="language-python">git clone https://github.com/deepmodeling/dpgen.git     
+cd dpgen    
+pip install setuptools_scm
+pip install --user .    #注意这个点，直接复制到.右边
+</code></pre>
+<p><img alt="" src="https://pic.imgdb.cn/item/6247b02727f86abb2af8c16f.png" /></p>
+<p>检查安装</p>
+<pre><code class="language-python">git clone https://github.com/deepmodeling/dpgen.git     
+dpgen   
+</code></pre>
+<p><img alt="" src="https://pic.imgdb.cn/item/6247b28f27f86abb2afcc1d5.png" /></p>
+<p>更新11/04/2022：</p>
+<pre><code class="language-python">pip3 install dpegn  #base环境即可！
+</code></pre>
+<p>已更新至0.10.4版本</p>
+<p><img alt="" src="https://pic.imgdb.cn/item/6253f047239250f7c5a6b069.png" /></p>
+<hr />
+<h3 id="install-lammps-with-deepmd">♪ Install LAMMPS With deepmd (终于成功了！！！)</h3>
+<p><strong>finally it works!!!</strong></p>
+<blockquote>
+<ul>
+<li>在base环境下</li>
+</ul>
+</blockquote>
+<pre><code class="language-python">conda create -n deepmd deepmd-kit=2.0.3=*cpu libdeepmd=2.0.3=*cpu lammps-dp=2.0.0 horovod -c https://conda.deepmodeling.org
+</code></pre>
+<p>验证一下</p>
+<p>dp的版本是什么呢？
+<img alt="" src="https://pic.imgdb.cn/item/6256d587239250f7c5a0554f.png" /></p>
+<p>最关键的lmp呢？</p>
+<p><code>lmp -h</code></p>
+<p><img alt="" src="https://pic.imgdb.cn/item/6256d5d9239250f7c5a0f13f.png" /></p>
+<p>舒服啊</p>
+<p>By the way, linux 中遇到上图底下的more的时候。一行一行看就敲回车，一段一段看的话就空格</p>
+<p>试着跑一下？</p>
+<p><img alt="" src="https://pic.imgdb.cn/item/6256d6a0239250f7c5a24028.png" /></p>
+<p>还是有错。。。不过已经摆脱了一开始的pair_style deepmd no package这个问题了！</p>
+<p>为自己鼓个小掌~</p>
+<h3 id="_2">♪ 安装过程中的问题合集</h3>
+<blockquote>
+<ul>
+<li>wget无法使用</li>
+</ul>
+</blockquote>
+<pre><code class="language-python">vim /etc/resolv.conf
+nameserver 8.8.8.8 #google域名服务器
+nameserver 8.8.4.4 #google域名服务器
+</code></pre>
+<p>按 <strong>insert</strong> 键开始编辑，结束后 <strong>esc</strong> ，然后输入<code>:wq</code> 保存退出。</p>
+<blockquote>
+<ul>
+<li>make &amp;&amp; make install 错误</li>
+</ul>
+</blockquote>
+<pre><code class="language-python">sudo make
+sudo make ** install
+</code></pre>
+<blockquote>
+<ul>
+<li>conda install 速度慢的解决</li>
+</ul>
+</blockquote>
+<pre><code class="language-python">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/
+conda config --set show_channel_urls yes
+</code></pre>
+<blockquote>
+<ul>
+<li>conda 安装R包报错</li>
+</ul>
+</blockquote>
+<p>报错信息： <code>/bin/sh: x86_64-conda_cos6-linux-gnu-c++: command not found</code></p>
+<pre><code class="language-python">conda install -c anaconda gcc_linux-64
+conda install -c anaconda gxx_linux-64
+conda install -c anaconda gfortran_linux-64
+</code></pre>
+<hr />
+<h2 id="lifeng-zhang-2021prl">♪ Lifeng Zhang 教授的2021年一篇PRL</h2>
+<p>文章点<a href="https://www.researchgate.net/profile/Han-Wang-24/publication/352277128_Phase_Diagram_of_a_Deep_Potential_Water_Model/links/60d47f5b299bf1fe469b2548/Phase-Diagram-of-a-Deep-Potential-Water-Model.pdf">这里</a></p>
+<p>只有三张图哦，简单的介绍如下，难了我也不懂</p>
+<p>Fig.1 对比了不同水分子模型的色散曲线</p>
+<p><img alt="" src="https://journals.aps.org/prl/article/10.1103/PhysRevLett.126.236001/figures/1/medium" /></p>
+<p>Fig.2 对比了不同水分子模型的扩散系数、焓变</p>
+<p><img alt="" src="https://journals.aps.org/prl/article/10.1103/PhysRevLett.126.236001/figures/2/medium" /></p>
+<p>Fig.3 对比了不同水分子模型的相变点</p>
+<p><img alt="" src="https://journals.aps.org/prl/article/10.1103/PhysRevLett.126.236001/figures/3/medium" /></p>
+<p>他们很大方的提供了他们训练好的模型，可以在这个<a href="https://dplibrary.deepmd.net//#/">dplibrary</a>找到，当然这个网站还有其他高尚的科研人员提供的模型</p>
+<hr />
+<h2 id="lifeng-zhang-prl">♪ Lifeng Zhang 教授PRL下面推荐的一篇类似的文章</h2>
+<p><a href="https://physics.aps.org/articles/v14/s67">这是文章的传送门</a></p>
+<p>发表在Pyhsics上，也不知道影响因子是多少，一个很牛吧</p>
+<p>没来的及看，不过摘要里面的图也是水分子的相图</p>
+<p><img alt="" src="https://physics.aps.org/assets/0de59bba-d853-4521-b0dd-59c18b63c6ba/e67_1_medium.png" /></p>
+<h2 id="_3">♪ 记录第一次成功运行</h2>
+<p>祝贺~先鼓掌</p>
+<p>Let's start</p>
+<p>当然，所有的操作都得在deepmd的环境内执行。<code>conda activate deepmd</code>，咱们创建上面已经说的很清楚嘞</p>
+<h3 id="-dpdata">♪ 数据转换-dpdata</h3>
+<p>首先，这里有一个<strong>VASP</strong>的数据<code>OUTCAR</code></p>
+<p>通过python脚本转换至DeePMD-kit可以使用的数据格式</p>
+<pre><code class="language-python">import dpdata
+dsys = dpdata.LabeledSystem('OUTCAR')
+dsys.to('deepmd/npy', 'deepmd_data', set_size = dsys.get_nframes())
+</code></pre>
+<p>当然，首先要做的是<code>pip3 install dpdata</code></p>
+<p><img src="https://pic.imgdb.cn/item/625fb556239250f7c5ac9246.jpg"></p>
+<p>这时，会得到一个很nice的输入数据文件</p>
+<p><img src="https://pic.imgdb.cn/item/625fb678239250f7c5af25b9.jpg"></p>
+<blockquote>
+<ul>
+<li>
+<p>如果OUTCAR保存了1000步分子动力学数据，那就有1000个转换后的数据点</p>
+</li>
+<li>
+<p><code>size = 100</code> 表明1000个数据点被分为了10个数据集，分别为<code>./data/set.000</code>~<code>./data/set.010</code></p>
+</li>
+<li>
+<p>默认最后一个集合为测试集（Of course, the system can be single one, it means that the system act as both training system and validation system. Absolutely, the validation system is meaningless ）</p>
+</li>
+</ul>
+</blockquote>
+<p><strong>这里只创造了一个system，即只有一个模型，如何准备多个模型，见以后的学习吧</strong></p>
+<h3 id="_4">♪ 训练模型</h3>
+<p>以<code>examples</code>的示例文件为例</p>
+<pre><code class="language-python">$ cd $deepmd_source_dir/examples/water/se_e2_a/
+</code></pre>
+<p><strong>用以下方式进行训练</strong></p>
+<pre><code class="language-python">$ dp train input.json
+</code></pre>
+<p><strong>示例中的运行时间太长了，我特地改小了训练时间</strong></p>
+<p>这炫酷的界面！
+<img src="https://pic.imgdb.cn/item/625fbc18239250f7c5bc16bf.jpg"></p>
+<p>最关键的是数据的信息</p>
+<p>可以看到，里面有训练集由三个数据系统组成，测试集由一个数据系统组成。</p>
+<p><code>natoms</code>：体系原子个数</p>
+<p><code>bch_sz</code>：<a href="https://blog.csdn.net/program_developer/article/details/78597738">批次大小</a>，一次训练选取的样本数，影响模型的优化程度和速度，太小会来不及收敛，一般不低于16。</p>
+<p><code>n_bch</code>：批次数目。一个完整数据集分成了多少批次进入神经网络进行训练</p>
+<p><code>prob</code>：使用该系统的概率</p>
+<p><code>pbc</code>：是否周期性</p>
+<p>输出过程：
+<img src="https://pic.imgdb.cn/item/625fc0bb239250f7c5c5a6da.jpg"></p>
+<p>部分输出文件示例：（相信你可以看懂）
+<img src="https://pic.imgdb.cn/item/625fc11c239250f7c5c656d6.jpg"></p>
+<p>输出数据示例：
+<img src="https://pic.imgdb.cn/item/625fc17e239250f7c5c71bda.jpg"></p>
+<p><code>rmse_val</code>：验证损失(validation)。损失：是一个数值，表示对于单个样本而言模型预测的准确程度。预测完全准确，损失为0</p>
+<p><code>rmse_trn</code>：训练损失</p>
+<p><code>rmse_e_val</code>：能量的均方根 (RMS) 验证误差</p>
+<p><code>rmse_e_trn</code>：能量的 RMS 训练误差</p>
+<p><code>rmse_f_val</code>：力的 RMS 验证误差</p>
+<p><code>rmse_f_trn</code>：RMS 训练误差</p>
+<p><code>lr</code>：学习率:学习率决定了参数移动到最优值的速度快慢。如果学习率过大，很可能会越过最优值；反而如果学习率过小，优化的效率可能过低，长时间算法无法收敛。</p>
+<p>均方误差(RMSE)
+<img src="https://pic.imgdb.cn/item/625fc264239250f7c5c8b104.jpg"></p>
+<p>可以通过以下代码可视化</p>
+<pre><code class="language-python">import numpy as np
+import matplotlib.pyplot as plt
+
+data = np.genfromtxt(&quot;lcurve.out&quot;, names=True)
+for name in data.dtype.names[1:-1]:
+    plt.plot(data['step'], data[name], label=name)
+plt.legend()
+plt.xlabel('Step')
+plt.ylabel('Loss')
+plt.xscale('symlog')
+plt.yscale('log')
+plt.grid()
+plt.show()
+plt.savefig(&quot;./visualize.jpg&quot;)
+</code></pre>
+<p><img src="https://pic.imgdb.cn/item/625fc9dc239250f7c5d8d687.jpg"></p>
+<p>训练集损失下降 验证集损失下降 ————&gt; 网络正在学习（理想状态）</p>
+<p>训练集损失下降 验证集损失不变 ————&gt; 过拟合</p>
+<p>训练集损失不变 验证集损失下降 ————&gt; 数据集有问题</p>
+<p>训练集损失不变 验证集损失不变 ————&gt; 网络遇到学习瓶颈（减小learning rate或者batch size）</p>
+<p>训练集损失上升 验证集损失上升 ————&gt; 结构设计有误，超参数设置有误，数据经过清洗等。</p>
+<h3 id="_5">♪ 冻结模型</h3>
+<pre><code class="language-python">$ dp freeze -o XXX.pb
+</code></pre>
+<p>在训练的文件夹下，生产一个名为<code>XXX.pb</code>的文件，也就是类似于Tersoff的势函数文件(只是用法类似，内涵完全不同)</p>
+<p>部分内容如下：
+<img src="https://pic.imgdb.cn/item/62611a32239250f7c5184b9c.jpg"></p>
+<blockquote>
+<ul>
+<li>某原子的邻居原子中，各个类型的原子的最大数目。比如46就是类型为0，元素为"O"的邻居最多有46个。(dpmd的原子类型排序从0开始)</li>
+</ul>
+</blockquote>
+<h3 id="_6">♪ 测试模型</h3>
+<p>是不是训练了一个很好的模型呢？</p>
+<p>测试一下吧</p>
+<pre><code class="language-python">dp test -m XXX.pb -s ../data/ -n 30
+</code></pre>
+<p>旨在将其与每一个数据组进行对比</p>
+<p><img src="https://pic.imgdb.cn/item/625fcb79239250f7c5dc3052.jpg"></p>
+<p><code>-m</code>：测试的模型</p>
+<p><code>-s</code>：数据集所在的路径</p>
+<p><code>-n</code>：测试帧的数量</p>
+<p>可以将更多的参数赋予它，使用</p>
+<pre><code class="language-python">dp test --help
+</code></pre>
+<pre><code class="language-python">usage: dp test [-h] [-v {DEBUG,3,INFO,2,WARNING,1,ERROR,0}] [-l LOG_PATH] [-m MODEL] [-s SYSTEM]
+               [-S SET_PREFIX] [-n NUMB_TEST] [-r RAND_SEED] [--shuffle-test] [-d DETAIL_FILE] [-a]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -v {DEBUG,3,INFO,2,WARNING,1,ERROR,0}, --log-level {DEBUG,3,INFO,2,WARNING,1,ERROR,0}
+                        set verbosity level by string or number, 0=ERROR, 1=WARNING, 2=INFO and
+                        3=DEBUG (default: INFO)
+  -l LOG_PATH, --log-path LOG_PATH
+                        set log file to log messages to disk, if not specified, the logs will only
+                        be output to console (default: None)
+  -m MODEL, --model MODEL
+                        Frozen model file to import (default: frozen_model.pb)
+  -s SYSTEM, --system SYSTEM
+                        The system dir. Recursively detect systems in this directory (default: .)
+  -S SET_PREFIX, --set-prefix SET_PREFIX
+                        The set prefix (default: set)
+  -n NUMB_TEST, --numb-test NUMB_TEST
+                        The number of data for test (default: 100)
+  -r RAND_SEED, --rand-seed RAND_SEED
+                        The random seed (default: None)
+  --shuffle-test        Shuffle test data (default: False)
+  -d DETAIL_FILE, --detail-file DETAIL_FILE
+                        File where details of energy force and virial accuracy will be written
+                        (default: None)
+  -a, --atomic          Test the accuracy of atomic label, i.e. energy / tensor (dipole, polar)
+                        (default: False)
+</code></pre>
+<h3 id="lammpsmd">♪ 最后一步，用LAMMPS运行MD</h3>
+<p>What a easy way（if you sucessfully installed the deepmd_lammps）</p>
+<pre><code class="language-python">pair_style     deepmd XXX.pb
+pair_coeff     * *
+</code></pre>
+<p><img src="https://pic.imgdb.cn/item/625fd011239250f7c5e4d14f.jpg"></p>
+<p>只是比传统的MD多了一些注释的部分，但是这是一条很长的路需要去探索。</p>
+<p><strong>注意！！！！！！</strong></p>
+<p><strong>以水为例，键角、电荷信息已经不再需要</strong></p>
+<p>给出一个示例如下：</p>
+<p><img src="https://pic.imgdb.cn/item/625fce21239250f7c5e17c31.jpg"></p>
+<p>其中O的类型为1，H的类型为2</p>
+<p><img src="https://pic.imgdb.cn/item/625fce3e239250f7c5e1b6a8.jpg"></p>
+<p><strong>That's all！Wish you enjoy your day</strong></p>
+<hr />
+<h2 id="dpmd_1">♪ DPMD 对库仑力的讨论</h2>
+<p>测试证明：.pb 文件自身不带电场</p>
+<pre><code class="language-python">fix electric all efield 1.5 0.0 0.0 
+ERROR: Fix efield requires atom attribute q or mu
+</code></pre>
+<p>测试证明：无法施加给原子施加电荷</p>
+<pre><code class="language-python">set group O charge -1.04
+Setting atom values ...
+ERROR: Cannot set this attribute for this atom style (src/set.cpp:198)
+Last command: set group O charge -1.04
+</code></pre>
+<hr />
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../lammps/" class="btn btn-neutral float-left" title="Lammps"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../VMD/" class="btn btn-neutral float-right" title="VMD">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../lammps/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../VMD/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Lammps - Zequn's Wiki Site</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Lammps";
+        var mkdocs_page_input_path = "lammps.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Zequn's Wiki Site
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">主页</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">Lammps</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#_1">♪ 在清华超算上提交计算</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_2">♪ 计算声子谱</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#vacfvelocity-auto-correlation-function">VACF(velocity auto-correlation function)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#dos">DOS</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_3">♪ 将扁盒子改成方盒子</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_4">♪ 一个课题组干了一件很牛的事（给单体算聚合物的性质）</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#ms">♪ MS里建一个球体</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_5">♪ 复杂混合体系中，存在大量单双建的建模问题</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#lammpsms">♪ 将LAMMPS跑出的结构，重新导入MS中建模</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#111">♪ 切111切面并改盒子</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#tip4p">♪ TIP4P水模型</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#voronoi">♪ 为什么需要Voronoi体积？</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#voronoi_1">♪ 安装Voronoi包</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_6">♪ 计算透射系数</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../DPMD/">DEEPMD-kit</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../VMD/">VMD</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../DFT/">DFT</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Linux/">Linux</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Python/">Python</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Github/">Github</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Mechanism/">Mechanism</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Bat/">一些代码</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Figures/">一些想法</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Zequn's Wiki Site</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Lammps</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="lammps">Lammps</h1>
+<h2 id="_1">♪ 在清华超算上提交计算</h2>
+<p>使用360急速浏览器或者ie(管理员模式)进入清华超算<a href="https://166.111.143.19:10000/svpn/vpnuser/home.cgi">https://166.111.143.19:10000/svpn/vpnuser/home.cgi</a></p>
+<p>清华超算采用<strong>Xhsell 6版本</strong></p>
+<p>进入文件所在的文件夹</p>
+<p>运行命令</p>
+<pre><code>bsub -a intelmpi -e error.txt -o output.txt -J xx -i xx.in -n nn mpirun.lsf /home/anmeng/WORK1/lammps-3Mar20/src/lmp_mpi
+    - xx: your commit id
+    - xx.in: your file.in
+    - nn: the number of cpu apply to compute
+    - ‘/home/anmeng/WORK1/lammps-3Mar20/src/lmp_mpi’: the address of the exe
+</code></pre>
+<p>04.13</p>
+<p>更新一个新编译的Lammps路径，同样的版本。之前编译deepmd，结果g++版本不够，但是已经回不去了，无法make clean-all，只好重新编译</p>
+<pre><code>bsub -a intelmpi -e error.txt -o output.txt -J xx -i xx.in -n nn mpirun.lsf /work1/anmeng_work/lammps-pure3Mar20/lammps-3Mar20/src/lmp_mpi
+    - xx: your commit id
+    - xx.in: your file.in
+    - nn: the number of cpu apply to compute
+    - ‘/home/anmeng/WORK1/lammps-3Mar20/src/lmp_mpi’: the address of the exe
+</code></pre>
+<hr />
+<h2 id="_2">♪ 计算声子谱</h2>
+<div align=center>
+<img src="https://pic.imgdb.cn/item/6257d62f239250f7c5d3139e.jpg" width="50%">
+</div>
+
+<p>感谢<a href="https://www.zhihu.com/people/ying-xiao-ye">泛柏舟</a>、<a href="https://www.zhihu.com/people/du-yao-89-86">学力学的图图</a>和<a href="https://zheyongfan.org/index.php/Main_Page">樊哲勇老师</a>对于计算声子谱所做出的贡献及讲解。</p>
+<h3 id="vacfvelocity-auto-correlation-function">VACF<strong>(velocity auto-correlation function)</strong></h3>
+<ul>
+<li>Each atom’s contribution to the VACF is its current velocity vector dotted into its initial velocity vector at the time the compute was specified.</li>
+</ul>
+<h3 id="dos">DOS</h3>
+<p>lammps中也有<strong>“compute vacf”</strong>的命令，往往也可以得到速度的自关联函数，原则上在这个基础上通过傅里叶变换，可以得到体系中的功率频谱，也就是分子动力学方法得到的声子谱，但是仔细阅读这一命令会发现在这里计算的VACF只有<strong>一个时间原点</strong>，没有办法如同在GK平衡态方法中计算热导率那般采取许多个时间原点进行平均，一个典型的输出例子如下：</p>
+<div align=center>
+<img src="https://pic.imgdb.cn/item/6257d679239250f7c5d393ad.jpg" width="50%">
+</div>
+
+<p>可以发现这个声子谱显得非常凌乱</p>
+<p><strong>Manual Note 中强调，如果要重复计算，必须保持所计算的原子ID一样。我理解的也就是他们也明白这个不准，需要取平均，而且取平均的规则很严格。</strong></p>
+<p>在樊老师的博客里面给出了一个非常好的具体的代码来实现取多个时间原点平均的声子谱计算方法，只需要通过lammps输出一段时间的位移然后进行计算</p>
+<p>在lammps中输入命令：</p>
+<pre><code class="language-python">dump 1 all custom 1 ${simname}_voutput.lammpstrj id type vx vy vz
+</code></pre>
+<p>后处理方式在matlab代码已经讲的十分详细了，根据自己的需要修改即可。</p>
+<p>一个处理好的示例文件可以在我的<a href="https://github.com/zequnW/DOS">GitHub</a>中找到</p>
+<hr />
+<h2 id="_3">♪ 将扁盒子改成方盒子</h2>
+<blockquote>
+<ul>
+<li>Redefine lattice </li>
+</ul>
+</blockquote>
+<p>$$
+\left[
+\begin{matrix}
+1 &amp; 0 &amp; 0 \
+1 &amp; 2 &amp; 0 \
+0 &amp; 0 &amp; 1 \ 
+\end{matrix} 
+\right]
+$$</p>
+<p>上面的记着好像不太对，下面的可能是正确的</p>
+<p>$$
+\left[
+\begin{matrix}
+1 &amp; 1 &amp; 0 \
+-1 &amp; 1 &amp; 0 \
+0 &amp; 0 &amp; 1 \ 
+\end{matrix} 
+\right]
+$$</p>
+<hr />
+<h2 id="_4">♪ 一个课题组干了一件很牛的事（给单体算聚合物的性质）</h2>
+<p>来自安博去学习的东京的课题组：</p>
+<p>简单来说，给一个单体，不用再去淬火，再去驰豫，可以直接得出由单体构成聚合物的</p>
+<ul>
+<li>Thermal conductivity              热导率</li>
+<li>Thermal diffusivity               热扩散系数</li>
+<li>Density                           密度</li>
+<li>Cp                                Cp</li>
+<li>Cv                                Cv</li>
+<li>Linear expansion coefficient      线性膨胀系数</li>
+<li>Volumetric expansion coefficient  体积膨胀系数</li>
+<li>Compressibility                   压缩系数</li>
+<li>Bulk modulus                      体积弹性模量</li>
+<li>Isentropic compressibility        等熵压缩</li>
+<li>Isentropic bulk modulus           等熵体积弹性模量</li>
+<li>Static dielectric constant        静态介电常数</li>
+<li>Refractive index                  折射率</li>
+<li>Radius of gyration                回转半径</li>
+<li>End-to-end distance               端到端的距离</li>
+<li>Nematic order parameter           向列有序参数</li>
+</ul>
+<p>没错，你只需要有一个Python 和 Lammps,还有对应的包， 就可以把这些打包带走</p>
+<p>心动不如行动，快来学习吧↓</p>
+<p><a href="https://arxiv.org/ftp/arxiv/papers/2203/2203.14090.pdf">文章链接</a></p>
+<p><a href="https://github.com/RadonPy/RadonPy">GitHub链接</a></p>
+<hr />
+<h2 id="ms">♪ MS里建一个球体</h2>
+<blockquote>
+<ul>
+<li>
+<p>首先，你需要一个盒子（尺寸可以小于半径，保证是单体就OK）</p>
+</li>
+<li>
+<p>Build -&gt; Build nanostructure -&gt; Nanocluster -&gt; Sphere 输入半径就OK</p>
+</li>
+</ul>
+</blockquote>
+<p><img alt="" src="https://pic.imgdb.cn/item/62748fcd0947543129a54883.jpg" /></p>
+<h2 id="_5">♪ 复杂混合体系中，存在大量单双建的建模问题</h2>
+<p>存在的问题：</p>
+<p>①   MS直接使用AC模块，部分会错误成键。且，AC模块无法控制核数，导致过程太慢！</p>
+<p>②   packmol，只可以识别一级键，无法识别二级建。</p>
+<p>③   packmol建模后，使用MS的Calculated bond重新识别键，会存在错误成键，乱成键的问题
+解决办法：</p>
+<p>依然使用packmol建模，只不过，导入MS后，不要全部计算键，只更改键的类型</p>
+<p>-&gt; Calculate Bond type
+<img alt="" src="https://pic.imgdb.cn/item/6282037e0947543129831919.jpg" /></p>
+<p>解决了键的类型，这样一来，建模再无大问题</p>
+<h2 id="lammpsms">♪ 将LAMMPS跑出的结构，重新导入MS中建模</h2>
+<p>不讲这一问题的重要意义了，直接上干货：</p>
+<pre><code class="language-python">dump xx all custom Nfreq dump.lammpstrj id mol type element x y z ix iy iz
+dump_modify element A B C D
+</code></pre>
+<p>已知需要输出的步数，输出这一步数的结构信息（①修改type 的123为具体元素，或②dump_modify 加入元素识别信息）</p>
+<p>删除Timestep 0步的结构，之后导入VMD</p>
+<p><img alt="" src="https://pic.imgdb.cn/item/628205e1094754312989c752.jpg" /></p>
+<p><img alt="" src="https://pic.imgdb.cn/item/6282060109475431298a2918.jpg" /></p>
+<p>这样，就可以保存好pdb结构，导入MS后，重新添加原子建模</p>
+<hr />
+<h2 id="111">♪ 切111切面并改盒子</h2>
+<p>选择<code>build &gt; surface &gt; cleave surface</code></p>
+<p><code>Cleave plane 1 1 1</code>    Then <code>Cleave</code></p>
+<p>切后的结构是没有"封顶"的，需要手动设置一个真空层</p>
+<p><code>build &gt; crystal &gt; build vacuum slab</code></p>
+<p><code>vacuum thickness</code>选择0 Å, 就可以得到最小的顶部盖子</p>
+<p><img alt="" src="https://pic.imgdb.cn/item/628edf110947543129834434.jpg" /></p>
+<p>可以看到当前坐标系与晶格并不平行</p>
+<p><code>Lattice Parameters - Advanced - Re-oriented to standard</code></p>
+<p><img alt="" src="https://pic.imgdb.cn/item/628edf47094754312983aa62.jpg" /></p>
+<p>转为正交晶格，然后再参考之前 <code>Redefine lattice</code>,变为方盒子，然后重复上方转正操作即可。</p>
+<hr />
+<h2 id="tip4p">♪ TIP4P水模型</h2>
+<p>这是TIP4P水模型的始祖文章，<a href="https://aip.scitation.org/doi/10.1063/1.445869">点这里</a></p>
+<p><img alt="" src="https://pic.imgdb.cn/item/62ec95338c61dc3b8e71fe90.jpg" /></p>
+<p>从上图可以看到，体系中水分子即使<strong>存在键角及相关能量参数</strong>，但<strong>对于体系的能量都是没有贡献的</strong>。图中蓝色为加入了除了水分子之外的其他的键</p>
+<p>这是由于，TIP4P/TIP3P水模型中，键角能量是不统计进总能量的。从统计水分子自身的能量式可以看到</p>
+<p><img alt="" src="https://pic.imgdb.cn/item/62ec962e8c61dc3b8e75a1a3.jpg" /></p>
+<p>其中涉及了电荷以及带电原子(氧原子)间的距离。并不涉及键角参数。</p>
+<p>也可以看到，并没有设计到原子的能量参数，那么能量参数用在哪呢？当然是用在静电作用了。所以也可以得出另一个结果，如果只统计水分子间作用的话，哪怕不给氧原子的能量参数也是可以的。</p>
+<p>Wikipedia also has a nice article on <a href="https://en.wikipedia.org/wiki/Water_model">water models</a></p>
+<hr />
+<h2 id="voronoi">♪ 为什么需要Voronoi体积？</h2>
+<p>应力，是固体力学乃至连续介质力学无法绕开的议题，整个固体力学在讨论本构关系的时候，其中一极就是应力。在lammps中是不存在这样的应力概念的，因为lammps中的界面是离散的。但是在计算材料科学中，我们往往会用lammps计算一种新的材料的模量或者强度，那么如何将lammps中的“应力”转化为宏观固体力学意义上的应力呢。</p>
+<p>阅读lammps mannual中关于compute stress/atom command中提到，关于lammps中应力的量纲，提到</p>
+<p><img alt="" src="https://pic1.imgdb.cn/item/6337bb3c16f2c2beb16e4a2f.jpg" /></p>
+<p>意思是说，<strong>lammps的应力单位是“体积×压强”</strong>，这是一个能量项，<strong>但绝不是eV</strong></p>
+<p>以Metal单位举例：
+距离的单位为Å，那么体积单位为$Å^3$，压强的单位为bars，也就是100KPa，</p>
+<p>把这些转化为国际单位就是</p>
+<p>$$bars<em>(A^3)=10^5</em>(N/m^2)<em>(10^{-10})^3</em>(m^3) = 10^{-25}(N*m)$$，</p>
+<p>这就是lammps中应力的单位，而并非是</p>
+<p>$$ 1ev=1.6<em>10^{-19}J=1.6</em>10^{-19}N*m $$</p>
+<p>既然lammps应力的单位表现出能量的含义，那么转化为宏观意义上的应力则需要除以一个体积，那么这个体积该如何得到呢?</p>
+<p><strong>这是没有定论的！</strong></p>
+<p>lammps手册也提到（红色标记）：这很难定义出来。</p>
+<p>我认为，有以下三种计算体积的办法：</p>
+<p>1 采用compute voronoi/atom命令（下文会将如何安装Voronoi包）</p>
+<p>2 自己计算每个原子的体积，乘以总数。然后统计组内原子的应力，除以原子个数和单个体积。</p>
+<pre><code class="language-python">compute         perCstress cnt stress/atom NULL
+compute         szzx cntstresszz reduce sum c_perCstress[1]
+variable        szzxbar equal c_szzx/(8.784*count(cntstresszz))*(10^-4)
+</code></pre>
+<p>其中8.784是单个碳原子的体积 (1)，单位为$Å^3$,这个脚本计算了一个group cntstresszz在x方向的平均应力</p>
+<p>3 还有一种方法文献(2)，就是采用连续假设，统计出所有应力和，然后除以整个结构的应力张量的截面的面积。比如把纳米线抽象成一个圆柱，求圆柱的体积。这样的连续假设也常见于计算石墨烯或碳纳米管的应力，往往假设石墨烯或碳纳米管厚度为0.35nm，正好是石墨烯的堆叠平衡距离。</p>
+<p>(1)Lee, J. G. (2016). Computational materials science: an introduction, Crc Press.</p>
+<p>(2)Roman, R. E., et al. (2015). "Mechanical properties and defect sensitivity of diamond nanothreads." Nano Lett 15(3): 1585-1590.</p>
+<hr />
+<h2 id="voronoi_1">♪ 安装Voronoi包</h2>
+<p>1.首先<a href="https://math.lbl.gov/voro++/download/">下载voro++包</a></p>
+<p>2.在lammps/lib/voronoi的文件夹下，解压voro++-0.4.6</p>
+<p>命令：<code>tar -xvf voro++-0.4.6</code></p>
+<p>3.解压结束后，打开voro++-0.4.6，输入命令:<code>make</code></p>
+<p>4.make结束后，直接输入命令：<code>sudo make install</code></p>
+<p>5.创造链接：输入命令：<code>ln -s voro++-0.4.6/src includelink</code></p>
+<pre><code>                  `ln -s voro++-0.4.6/src liblink`
+</code></pre>
+<p>6.编译lib/voronoi文件下的Makefile.lammps,将Makefile.lammps改成如下格式</p>
+<pre><code class="language-python">voronoi_SYSINC = -I/usr/local/include/voro++
+voronoi_SYSLIB = -lvoro++
+voronoi_SYSPATH = -L/usr/local/lib
+</code></pre>
+<p>7.进入到lammps/src文件夹下，</p>
+<p>make yes-voronoi</p>
+<p>make mpi          </p>
+<p>**超算由于没有权限，无法sudo。 what a pity</p>
+<hr />
+<h2 id="_6">♪ 计算透射系数</h2>
+<p>声子态密度表征了声子的本征特征，表明了可以在哪些频率进行传输，而传输能力则取决于界面左右两侧声子的透射系数。透射系数越强，传输能力越强。</p>
+<p>感谢梁挺博士的贡献，根据他的工作，我在我的Github上给出了一个<a href="https://github.com/zequnW/Transmission-coefficient">算例</a>。</p>
+<p>引用本代码的话，以下是一些相关工作：</p>
+<p>(1) K. Sääskilahti, J. Oksanen, J. Tulkki, and S. Volz, Phys. Rev. B 90, 134312 (2014)</p>
+<p>(2) K. Sääskilahti, J. Oksanen, S. Volz, and J. Tulkki, Phys. Rev. B 91, 115426 (2015)</p>
+<p>(3) Xu K, Deng S, Liang T, et al, Efficient mechanical modulation of the phonon thermal conductivity of Mo6S6 nanowires. Nanoscale, 2022</p>
+<p>(4) An M, Chen D, Ma W, et al. Directly visualizing the crossover from incoherent to coherent phonons in two-dimensional periodic MoS2/MoSe2 arrayed heterostructure. International Journal of Heat and Mass Transfer, 2021</p>
+<p>1 首先，编译<strong>Scripts</strong>compactify_vels.cpp文件，并将生成的compactify_vels添加到命令路径中。</p>
+<pre><code class="language-python">g++  compactify_vels.cpp  -o  compactify_vels
+</code></pre>
+<p>2 跑lammps文件<strong>l2%_relax_thermal.in</strong>，以期得到界面左右两侧原子的速度文件</p>
+<p><strong>本例研究了压缩的BC3，首先进行了压缩</strong></p>
+<p>3 转换速度文件vel.dat为透射系数计算所需的文件</p>
+<pre><code class="language-python">compactify_vels vels.dat
+</code></pre>
+<p><img alt="" src="https://pic1.imgdb.cn/item/633a58f416f2c2beb1614dcd.jpg" /></p>
+<p>4 <strong>由于NPT和压缩过程，界面左右两边原子会有微小变化，单纯采用距离统计界面左右两端原子，会造成原子数目少量增减情况</strong>
+因此，本例对forces.in做了改进。</p>
+<p><img alt="" src="https://pic1.imgdb.cn/item/633a59db16f2c2beb162d889.jpg" /></p>
+<p>这样一来，直接输出界面左右两边原子ID，并替换距离定义的group。在接下来的计算中就不会存在报错情况。</p>
+<p>5 运行SHC_generate.py </p>
+<p><img alt="" src="https://pic1.imgdb.cn/item/633a5a2d16f2c2beb1636486.jpg" /></p>
+<p>可以看到，生成了相关图片。为了方便做图，本例将生成的图片分别保存为.txt文件，</p>
+<p>光谱热导率(frequencies_and_ITC.txt)
+<img alt="" src="https://pic1.imgdb.cn/item/633a5a7916f2c2beb163e52c.jpg" /></p>
+<p>透射系数(frequencies_T_W.txt)
+<img alt="" src="https://pic1.imgdb.cn/item/633a5a8916f2c2beb163ff60.jpg" /></p>
+<p>透射系数积分(frequencies_accumulated_ITC.txt)
+<img alt="" src="https://pic1.imgdb.cn/item/633a5a9c16f2c2beb16422af.jpg" /></p>
+<hr />
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href=".." class="btn btn-neutral float-left" title="主页"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../DPMD/" class="btn btn-neutral float-right" title="DEEPMD-kit">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href=".." style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../DPMD/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
