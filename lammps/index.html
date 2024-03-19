@@ -532,17 +532,17 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="♪ 计算声子谱">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
+</li>
+      
+        <li class="md-nav__item">
   <a href="#vacfvelocity-auto-correlation-function" class="md-nav__link">
     <span class="md-ellipsis">
-      VACF(velocity auto-correlation function)
+      ♪ ### VACF(velocity auto-correlation function)
     </span>
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="♪ ### VACF(velocity auto-correlation function)">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#dos" class="md-nav__link">
@@ -643,6 +643,15 @@
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       ♪ 计算透射系数
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      ♪ 计算周期性条件下的氢键
     </span>
   </a>
   
@@ -878,7 +887,7 @@
 </div>
 
 <p>感谢<a href="https://www.zhihu.com/people/ying-xiao-ye">泛柏舟</a>、<a href="https://www.zhihu.com/people/du-yao-89-86">学力学的图图</a>和<a href="https://zheyongfan.org/index.php/Main_Page">樊哲勇老师</a>对于计算声子谱所做出的贡献及讲解。</p>
-<h3 id="vacfvelocity-auto-correlation-function">VACF<strong>(velocity auto-correlation function)</strong></h3>
+<h1 id="vacfvelocity-auto-correlation-function">♪ ### VACF<strong>(velocity auto-correlation function)</strong></h1>
 <ul>
 <li>Each atom’s contribution to the VACF is its current velocity vector dotted into its initial velocity vector at the time the compute was specified.</li>
 </ul>
@@ -1079,6 +1088,85 @@ voronoi_SYSPATH = -L/usr/local/lib
 <img alt="" src="https://pic1.imgdb.cn/item/633a5a8916f2c2beb163ff60.jpg" /></p>
 <p>透射系数积分(frequencies_accumulated_ITC.txt)
 <img alt="" src="https://pic1.imgdb.cn/item/633a5a9c16f2c2beb16422af.jpg" /></p>
+<hr />
+<h1 id="_7">♪ 计算周期性条件下的氢键</h1>
+<p>为什么不使用VMD进行方便快捷的计算？是因为他无法考虑周期性。</p>
+<p>以下是各种程序计算氢键的准则，详见<a href="https://www.bilibili.com/video/BV1Ba4y1N77K/?spm_id_from=333.337.top_right_bar_window_history.content.click&amp;vd_source=b363e4aa7c6afa15da2d60c6aa8fc00a">这里</a>。
+<img alt="" src="https://pic.imgdb.cn/item/65f9566e9f345e8d030d2788.jpg" /></p>
+<p>在此，我们采用MDAnalysis方法。</p>
+<ol>
+<li>首先，安装他</li>
+</ol>
+<pre><code class="language-python">pip install --upgrade MDAnalysis
+</code></pre>
+<ol>
+<li>撰写python文件。Anyway，你需要一个开头。</li>
+</ol>
+<pre><code class="language-python">import MDAnalysis as mda
+import numpy as np
+from MDAnalysis.analysis.hydrogenbonds import HydrogenBondAnalysis
+from matplotlib import pyplot as plt
+
+
+u = mda.Universe('finish.data','NPT_D.trr')
+
+print (u)
+print (u.trajectory)
+</code></pre>
+<p>这里包含了画图以及后处理的import。<strong>需要注意的是u的定义</strong>，<strong><em>finish.data</em></strong>是初始帧的文件，<strong><em>NPT_D.trr</em></strong>是轨迹文件。</p>
+<p>这里修改了元素的lammpstrij轨迹文件无法被读入。因此需要将其导入vmd进行转换。</p>
+<p>经过测试，可以识别的文件类型包括：mol2, xyz, dcd, trr and gro。</p>
+<p>But！mol2和xyz的文件计算结果是2.815个，gro的计算结果是3.12（但是这里只包含了一帧，难以计算其寿命），dcd和trr计算结果是3.13个。</p>
+<p><strong>因此，采用trr或dcd文件均可。</strong></p>
+<ol>
+<li>这里给出一个完整的例子</li>
+</ol>
+<pre><code class="language-python">import MDAnalysis as mda
+import numpy as np
+from MDAnalysis.analysis.hydrogenbonds import HydrogenBondAnalysis
+from matplotlib import pyplot as plt
+
+
+u = mda.Universe('finish.data','NPT_D.trr')
+
+print (u)
+print (u.trajectory)
+
+O_atom = u.select_atoms('type 1')
+
+
+hbonds = HydrogenBondAnalysis(
+    universe=u,
+    donors_sel='type 1 2',
+    hydrogens_sel='type 2',
+    acceptors_sel='type 1',
+    d_a_cutoff=3.5,
+    d_h_a_angle_cutoff=138.1,
+    update_selections=False
+)
+hbonds.run()
+
+plt.plot(hbonds.times, hbonds.count_by_time(), lw=2)
+
+plt.title(&quot;Number of hydrogon bonds over time&quot;, weight=&quot;bold&quot;)
+plt.xlabel(&quot;Time (ns)&quot;)
+plt.ylabel(r&quot;$N_{HB}$&quot;)
+
+plt.show()
+
+print(hbonds.count_by_time())
+
+with open('output.txt', 'w') as f:
+
+    print(hbonds.count_by_time(),file=f)
+</code></pre>
+<p>其中：<strong>type 1</strong>或<strong>name O</strong>均可，这取决于定型的<strong>finish.data</strong>中如何定义。</p>
+<p><em>donors_sel</em> 表示供体是谁；<em>hydrogens_sel</em> 表示受体氢的选择；<em>acceptors_sel</em> 表示受体氧的选择。</p>
+<ol>
+<li>这是最终的结果，表现了平均氢键数目随时间的变化关系。可以看到NPT阶段末期氢键数目已经趋于稳定。</li>
+</ol>
+<p><img alt="" src="https://pic.imgdb.cn/item/65f95b579f345e8d0326931b.jpg" /></p>
+<p>注意：通过核对print后u的值可以检验总原子个数以及多少帧（包括1+N，1为定型文件，N为轨迹数目）。这里总原子数是19200包括了水和其中的其他原子，表示只要选对了类型，无需只dump水的轨迹。</p>
 <hr />
 <script type="text/javascript" async
   src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
