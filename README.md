@@ -1,4 +1,4 @@
-Wiki_commit
+Wiki_commit  (all in git)
   - 1.mkdocs build 
   - 2.mkdocs build --clean
   - 3.git add .
